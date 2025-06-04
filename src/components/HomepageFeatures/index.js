@@ -4,33 +4,28 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'آسان و سریع',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        I built this project with simplicity in mind so that I can quickly
-        capture notes and ideas without any unnecessary hassle.
-      </>
+        من این پروژه برای نگه داشت و یاددآوری یادداشت هام ساختم. سادگی برام مهمترین ویژگی بوده      </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'تمرکز بر محتوا',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        I designed my notes system to help me stay focused on what truly
-        matters—organizing my thoughts and projects in a clear and concise way.
+        من این سیستم یادداشت‌برداری رو طوری طراحی کردم که بتونم روی چیزهایی که واقعا مهمن تمرکز کنم و افکار و پروژه‌هام رو به صورت واضح و مختصر سازماندهی کنم.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'ساخته شده با React',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        I chose React for its flexibility and ease of customization, allowing me
-        to tailor this project to my personal workflow as my digital second
-        brain.
+        
       </>
     ),
   },

@@ -13,12 +13,13 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <img src='https://github.com/meiti-x.png' style={{
-          width: '150px',
-          height: '150px',
+          width: '250px',
+          height: '250px',
           borderRadius: '50%',
           marginBottom: '20px',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-          border: '2px solid #fff',
+          border: '3px solid #484848',
+          backgroundColor:'#282828',
           transition: 'transform 0.3s ease',
         }} alt={siteConfig.title} />
          <Heading as="h1" className="hero__title">
