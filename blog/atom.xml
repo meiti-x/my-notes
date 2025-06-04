@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meiti-x.github.io/my-notes/blog</id>
-    <title>Meitix notes Blog</title>
+    <title>Meitix Notes Blog</title>
     <updated>2021-08-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meiti-x.github.io/my-notes/blog"/>
-    <subtitle>Meitix notes Blog</subtitle>
+    <subtitle>Meitix Notes Blog</subtitle>
     <icon>https://meiti-x.github.io/my-notes/https://github.com/meiti-x.png</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
