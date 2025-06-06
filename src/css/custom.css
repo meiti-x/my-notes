@@ -36,3 +36,38 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Vazirmatn", sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #333;
+}
+
+p {
+  color: #333;
+}
+
+mark {
+  padding: 1px 5px;
+  margin: 0 1px;
+  font-weight: 500;
+  border-radius: 5px;
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.theme-last-updated {
+  background-color: #fcfcfc;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  display: block;
+  margin-top: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
