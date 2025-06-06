@@ -1,6 +1,0 @@
-
-paging
-
-page table
-
-tlb
