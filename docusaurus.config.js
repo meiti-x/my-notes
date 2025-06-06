@@ -11,34 +11,26 @@ import { themes as prismThemes } from "prism-react-renderer";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "یادداشت های من",
-  favicon: "https://github.com/meiti-x.png",
+  favicon: "/img/docusaurus.png",
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
   url: "https://meiti-x.github.io",
   baseUrl: "/my-notes",
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "meiti-x", // Usually your GitHub org/user name.
-  projectName: "my-notes", // Usually your repo name.
+  organizationName: "meiti-x",
+  projectName: "my-notes",
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "fa",
     locales: ["fa"],
     localeConfigs: {
       fa: {
         label: "فارسی",
-        direction: "rtl", // Right-to-left for Persian
+        direction: "rtl",
       },
     },
   },
@@ -71,7 +63,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: "https://github.com/meiti-x.png",
       navbar: {
         title: "صفحه اصلی",
@@ -89,6 +80,37 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+
+  plugins: [
+    [
+      "@docusaurus/plugin-pwa",
+      {
+        debug: true,
+        offlineModeActivationStrategies: [
+          "appInstalled",
+          "standalone",
+          "queryString",
+        ],
+        pwaHead: [
+          {
+            tagName: "link",
+            rel: "icon",
+            href: "/img/docusaurus.png",
+          },
+          {
+            tagName: "link",
+            rel: "manifest",
+            href: "/manifest.json",
+          },
+          {
+            tagName: "meta",
+            name: "theme-color",
+            content: "rgb(37, 194, 160)",
+          },
+        ],
+      },
+    ],
+  ],
 };
 
 export default config;
