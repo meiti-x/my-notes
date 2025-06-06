@@ -42,6 +42,13 @@ const config = {
       ({
         docs: {
           sidebarPath: "./sidebars.js",
+          showLastUpdateTime: true,
+        },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          trailingSlash: true,
+          filename: "sitemap.xml",
         },
         blog: {
           showReadingTime: true,
@@ -67,6 +74,11 @@ const config = {
       navbar: {
         title: "صفحه اصلی",
         items: [
+          {
+            href: "/docs/intro",
+            label: "مستندات",
+            position: "left",
+          },
           {
             href: "https://github.com/meiti-x",
             label: "GitHub",
