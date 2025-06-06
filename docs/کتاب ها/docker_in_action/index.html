@@ -11,9 +11,9 @@
 
 <link rel="icon" href="/my-notes/img/docusaurus.png">
 <link rel="manifest" href="/my-notes/manifest.json">
-<meta name="theme-color" content="rgb(37, 194, 160)"><link rel="stylesheet" href="/my-notes/assets/css/styles.92167494.css">
-<script src="/my-notes/assets/js/runtime~main.5740b8b5.js" defer="defer"></script>
-<script src="/my-notes/assets/js/main.407995e0.js" defer="defer"></script>
+<meta name="theme-color" content="rgb(37, 194, 160)"><link rel="stylesheet" href="/my-notes/assets/css/styles.d56132eb.css">
+<script src="/my-notes/assets/js/runtime~main.ce923188.js" defer="defer"></script>
+<script src="/my-notes/assets/js/main.b7d70862.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -23,12 +23,12 @@
 <p><strong>نام کتاب</strong>: داکر در عمل</p>
 <p><strong>ویرایش:</strong> دوم</p>
 <p><strong>سال چاپ</strong>:۱۳۹۶</p>
-<p><strong>سال خوندن من</strong>: ۱۴۰۴</p>
+<p><strong>سال خوندن من</strong>: ۱۴۰۴ بهار</p>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="مقدمه">مقدمه<a href="#مقدمه" class="hash-link" aria-label="لینک مستقیم به مقدمه" title="لینک مستقیم به مقدمه">​</a></h2>
 <p>این قسمت بیشتر در مورد فلسفه داکر و چرایی اش هست و اینکه چرا داکر باعث <em>serviceability</em> <em>longevity</em> در برنامه هامون میشه</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="داکر-چیه">داکر چیه؟<a href="#داکر-چیه" class="hash-link" aria-label="لینک مستقیم به داکر چیه؟" title="لینک مستقیم به داکر چیه؟">​</a></h3>
-<p>داکر یک ابزار لجستیکی که برای حمل و نقل کانتینر ها هستش و همه این هارو به کمک مفهموی به اسم <em>containers</em> که در سیستم عامل ها هست انجام میده. داکر ابزار جدیدی اختراع نکرده و و همه چیزهای که که در کنار هم قرار داده وجود داشته  صرفا پیچیدگی پیاده سازی کانتینر ها یا jail هارو از دید ما پنهون کرده که باعث شده ایزوله سازی برای ما کار راحتی باشه مثل اکتشاف کانتینر برای اولین بار. داکر از این مفاهیم برای ایزوله کردن استفاده میکنه:</p>
+<p>داکر یک ابزار لجستیکی که برای بسته بندی و حمل و نقل کانتینر ها هستش و همه این هارو به کمک مفهموی به اسم <em>containers</em> که در سیستم عامل ها هست انجام میده. داکر ابزار جدیدی اختراع نکرده و و همه چیزهای که که در کنار هم قرار داده وجود داشته صرفا پیچیدگی پیاده سازی کانتینر ها یا jail هارو از دید ما پنهون کرده که باعث شده ایزوله سازی برای ما کار راحتی باشه مثل اکتشاف کانتینر برای اولین بار. داکر از این مفاهیم برای ایزوله کردن استفاده میکنه:</p>
 <span dir="ltr"><ul>
 <li><strong>UTS</strong> <em>namespace</em> -&gt; host and domain name</li>
 <li><strong>MNT</strong> <em>namespace</em> -&gt; filesystem access and structure</li>
@@ -42,18 +42,29 @@
 </ul></span>
 <p>بخاطر همین موارد داکر توی ویندوز فقط با VM یا  WSL اجرا میشه</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="کانتینر-چیه">کانتینر چیه؟<a href="#کانتینر-چیه" class="hash-link" aria-label="لینک مستقیم به کانتینر چیه؟" title="لینک مستقیم به کانتینر چیه؟">​</a></h4>
-<p>به صورت تاریخی اگه بخوایم بگیم سیستم عامل های UNIX-style مثل لینوکس از عبارتی مثل <em>jail</em> برای این موضوع استفاده میکردن. این باعث میشد که یه ران تایم داشته باشیم که محدوده دسترسی یک برنامه ای که jail شده مدیریت کنیم.</p>
+<p>به صورت تاریخی اگه بخوایم بگیم سیستم عامل های <code>UNIX-style</code> مثل لینوکس از عبارتی مثل <em>jail</em> برای این موضوع استفاده میکردن. این باعث میشد که یه ران تایم داشته باشیم که محدوده دسترسی یک برنامه ای که jail شده مدیریت کنیم.</p>
 <p><strong>آیا کانتینر همون مفهوم VM یا Virtualization هستش؟</strong> جواب کوتاه نه</p>
 <p>جواب بلند: برخلاف VM ها داکر از هیچ منابع virtual سخت افزاری استفاده نمیکنه. برنامه های که داخل کانتینر هاست شدن مستقیما با کرنل در ارتباط هستن (با واسطه سیستم عامل) خیلی از برنامه های در isolation اجرا میشن بدون اینکه نیاز باشه مثل VM ها سیستم عامل کاملا بوت بشن.</p>
-<p>با توجه به پیشرفت سخت افزار VM ها هم گزینه سریعی هستن. ولی فقط وقتی که OS کاملا بوت شود و این delay رو در داکر نداریم و از طرفی VM یک برنامه <mark>    user space هستش ولی داکر kernel space هستش </mark> که باعث میشه syscall هامون سریعتر بشه و درنهایت از منابع بهینه استفاده میشه</p>
+<p>با توجه به پیشرفت سخت افزار VM ها هم گزینه سریعی هستن. ولی فقط وقتی که <code>OS</code> کاملا بوت شود و این delay رو در داکر نداریم و از طرفی VM یک برنامه <mark>    user space هستش ولی داکر kernel space هستش </mark> که باعث میشه <code>syscall</code> هامون سریعتر بشه و درنهایت از منابع بهینه استفاده میشه</p>
 <p><strong>تفاوت image با کانتینر چیه؟</strong> به کامپوننتی که یه کانیتنر رو پر میکنه میگن image</p>
+<ul>
+<li><strong>Image:</strong> الگوی فقط-خواندنی که شامل تمام وابستگی‌ها و تنظیمات لازم برای اجرای برنامه است</li>
+<li><strong>کانتینر:</strong> نمونه‌ی درحال اجرا از یک Image که لایه نوشتنی نیز به آن اضافه شده است</li>
+</ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="چه-مشکلاتی-رو-داکر-حل-میکنه">چه مشکلاتی رو داکر حل میکنه؟<a href="#چه-مشکلاتی-رو-داکر-حل-میکنه" class="hash-link" aria-label="لینک مستقیم به چه مشکلاتی رو داکر حل میکنه؟" title="لینک مستقیم به چه مشکلاتی رو داکر حل میکنه؟">​</a></h3>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="انسجام">انسجام<a href="#انسجام" class="hash-link" aria-label="لینک مستقیم به انسجام" title="لینک مستقیم به انسجام">​</a></h4>
+<p>داکر مثل یک پرتال میمونه :) بعد از پایانش چیزی روی ذخیره نمیکن مگر ما بهش گفته بشیم که ذخیره کنه که این باعث میشه انسجام در سیستم خودمون داشته باشیم</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="پرتابیلیتی">پرتابیلیتی<a href="#پرتابیلیتی" class="hash-link" aria-label="لینک مستقیم به پرتابیلیتی" title="لینک مستقیم به پرتابیلیتی">​</a></h4>
+<ul>
+<li>اجرای یکسان روی هر سیستمی که داکر داشته باشه</li>
+<li>استقرار در محیط‌های مختلف بدون تغییرات</li>
+</ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="امنیت">امنیت<a href="#امنیت" class="hash-link" aria-label="لینک مستقیم به امنیت" title="لینک مستقیم به امنیت">​</a></h4>
+<p>مثل زندان های معمولی(‍<code>jail</code>) هر چیزی که داخل کانتینر هستش فقط به چیزهای دسترسی داخلش وجود داره. مگر اینکه یه مجوزی به صورت explicit از سمت یوزر داده بشه. کانتینر ها محمدوده  تاثیر روی برنامه های دیگه رو محدود میکنن، دیتای که میتونن دسترسی داشته باشن، شبکه ای که میتونن باشن، و ریسورس های که میتونن داشته باشن</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="چرا-داکر-مهمه">چرا داکر مهمه<a href="#چرا-داکر-مهمه" class="hash-link" aria-label="لینک مستقیم به چرا داکر مهمه" title="لینک مستقیم به چرا داکر مهمه">​</a></h3>
 <p>داکر یک <em>انتزاع</em> ایجاد میکنه. انتزاعی که به شما کمک میکنه روی مسايل سخت تر کار کنید. یعنی به جای اینکه فکرمون رو معطوف به چگونگی نصب و استقرار برنامه مون کنیم به نوشتن خوده برنامه فکر کنیم</p>
+<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="بخش-اول-process-isolation-and-enviroment-independet-computing">بخش اول: Process Isolation And Enviroment Independet Computing<a href="#بخش-اول-process-isolation-and-enviroment-independet-computing" class="hash-link" aria-label="لینک مستقیم به بخش اول: Process Isolation And Enviroment Independet Computing" title="لینک مستقیم به بخش اول: Process Isolation And Enviroment Independet Computing">​</a></h2>
-<h3></h3></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">آخرین به روز رسانی<!-- --> در تاریخ <b><time datetime="2025-06-06T13:56:22.000Z" itemprop="dateModified">۱۶ خرداد ۱۴۰۴</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="صفحات مستندات"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/کتاب ها/intro"><div class="pagination-nav__sublabel">قبلی</div><div class="pagination-nav__label">مقدمه</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#مقدمه" class="table-of-contents__link toc-highlight">مقدمه</a><ul><li><a href="#داکر-چیه" class="table-of-contents__link toc-highlight">داکر چیه؟</a></li><li><a href="#چه-مشکلاتی-رو-داکر-حل-میکنه" class="table-of-contents__link toc-highlight">چه مشکلاتی رو داکر حل میکنه؟</a></li><li><a href="#چرا-داکر-مهمه" class="table-of-contents__link toc-highlight">چرا داکر مهمه</a></li></ul></li><li><a href="#بخش-اول-process-isolation-and-enviroment-independet-computing" class="table-of-contents__link toc-highlight">بخش اول: Process Isolation And Enviroment Independet Computing</a></li></ul></div></div></div></div></main></div></div></div></div>
+<h3></h3></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">آخرین به روز رسانی<!-- --> در تاریخ <b><time datetime="2025-06-06T14:27:17.000Z" itemprop="dateModified">۱۶ خرداد ۱۴۰۴</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="صفحات مستندات"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/کتاب ها/intro"><div class="pagination-nav__sublabel">قبلی</div><div class="pagination-nav__label">مقدمه</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#مقدمه" class="table-of-contents__link toc-highlight">مقدمه</a><ul><li><a href="#داکر-چیه" class="table-of-contents__link toc-highlight">داکر چیه؟</a></li><li><a href="#چه-مشکلاتی-رو-داکر-حل-میکنه" class="table-of-contents__link toc-highlight">چه مشکلاتی رو داکر حل میکنه؟</a></li><li><a href="#چرا-داکر-مهمه" class="table-of-contents__link toc-highlight">چرا داکر مهمه</a></li></ul></li><li><a href="#بخش-اول-process-isolation-and-enviroment-independet-computing" class="table-of-contents__link toc-highlight">بخش اول: Process Isolation And Enviroment Independet Computing</a></li></ul></div></div></div></div></main></div></div></div></div>
 </body>
 </html>
