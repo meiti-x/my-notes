@@ -43,6 +43,7 @@ const config = {
         docs: {
           sidebarPath: "./sidebars.js",
           showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         sitemap: {
           changefreq: "weekly",
@@ -79,6 +80,11 @@ const config = {
             position: "left",
           },
           {
+            href: "/docs/tags",
+            label: "تگ ها",
+            position: "left",
+          },
+          {
             href: "https://github.com/meiti-x",
             label: "GitHub",
             position: "right",
@@ -87,7 +93,7 @@ const config = {
       },
 
       prism: {
-        theme: prismThemes.github,
+        theme: prismThemes.oneDark,
         darkTheme: prismThemes.dracula,
       },
     }),

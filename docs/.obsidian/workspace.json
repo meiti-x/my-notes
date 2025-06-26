@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d3bb71faa30bbc1a",
+        "id": "38fd3941ffe97c06",
         "type": "tabs",
         "children": [
           {
-            "id": "b9767130f1c56dce",
+            "id": "86ba6dac3e03a187",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Book",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -166,13 +166,14 @@
       "obsidiosaurus:Obsidiosaurus": false
     }
   },
-  "active": "b9767130f1c56dce",
+  "active": "86ba6dac3e03a187",
   "lastOpenFiles": [
+    "عمومی/مدیریت_زمان_از_نگاه_سنکا.md",
     "intro.md",
+    "().md",
     "کتاب ها/docker_in_action.md",
     "کتاب ها/intro.md",
     "نرم‌افزار/Rabbitmq.md",
-    "عمومی/مدیریت_زمان_از_نگاه_سنکا.md",
     "عمومی/بخش_تاریک_روان_از_دیدگاه_یونگ.md",
     "نرم‌افزار/جاوااسکریپت/RAIL.md",
     "نرم‌افزار/جاوااسکریپت/Parsing.md",
@@ -192,7 +193,6 @@
     "نرم‌افزار/دیتابیس/Index_DB.md",
     "نرم‌افزار/دیتابیس/Engine.md",
     "نرم‌افزار/دیتابیس/Denormalization.md",
-    "نرم‌افزار/دیتابیس/Cursor.md",
-    "نرم‌افزار/دیتابیس/CAP.md"
+    "نرم‌افزار/دیتابیس/Cursor.md"
   ]
 }

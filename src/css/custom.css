@@ -42,7 +42,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+[class^="admonitionHeading"] {
   font-family: "Vazirmatn", sans-serif !important;
   font-optical-sizing: auto;
   font-style: normal;
@@ -70,4 +71,11 @@ mark {
   display: block;
   margin-top: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.docs-tags-doc-list-page article {
+  border-radius: 15px;
+  border: 1px solid var(--ifm-color-primary-lightest);
+  background: #c3e2fb;
+  padding: 15px 10px;
 }
