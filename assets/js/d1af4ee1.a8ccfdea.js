@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_notes=self.webpackChunkmy_notes||[]).push([[9560],{5847:e=>{e.exports=JSON.parse('{"tags":[{"label":"excalidraw","permalink":"/my-notes/docs/tags/excalidraw","count":1}]}')}}]);
