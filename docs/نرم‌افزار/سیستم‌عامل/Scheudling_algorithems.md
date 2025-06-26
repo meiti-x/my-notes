@@ -1,3 +1,8 @@
+---
+title: Scheudling Algorithems
+tags:
+  - os
+---
 
 ## first come first served
 

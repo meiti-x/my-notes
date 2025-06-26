@@ -1,3 +1,8 @@
+---
+tags:
+  - os
+---
+#todo 
 text
 data section
 bss

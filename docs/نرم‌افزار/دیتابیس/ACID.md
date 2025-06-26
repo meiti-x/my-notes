@@ -1,3 +1,9 @@
+---
+tags:
+  - db
+  - system_design
+---
+
 در ابتدا باید بگیم ترنزکشن چیه؟ ترنزکشن یک مجموعه کوئری که به صورت یه unit of work رفتار میکنه و نمیتونه split بشه. و ترنزکشن یه چرخه داره
 - Transaction begin(checkpoint)
 - Transaction commit(savepoint)

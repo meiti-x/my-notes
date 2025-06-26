@@ -1,6 +1,7 @@
 اول در این موارد بخون
-[[CAP]]
-[[BASE]]
+- <mark>CAP</mark>
+- <mark>BaSE</mark>
+
 
 ### Synchronous = Strong Consistency
 

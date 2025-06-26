@@ -1,3 +1,11 @@
+---
+title: Burst time
+tags:
+  - os
+  - system_design
+---
+
+
 در نرم‌افزار و به‌ویژه در **سیستم‌عامل‌ها**، منظور از **burst time** (یا **CPU burst time**) مدت زمانیه که یک پردازش (process) یا thread بدون وقفه از CPU استفاده میکنه
 
 

@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "aedbe040d2436fa9",
+    "id": "2e51317fdc03596e",
     "type": "split",
     "children": [
       {
-        "id": "d3bb71faa30bbc1a",
+        "id": "bf86c57c0edbc37a",
         "type": "tabs",
         "children": [
           {
-            "id": "b9767130f1c56dce",
+            "id": "6cadd10b418a1d4d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "کتاب ها/docker_in_action.md",
+                "file": "docs/intro.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "docker_in_action"
+              "title": "intro"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "af3e0231ba9bc7a6",
+    "id": "e16abfa8d13c1a93",
     "type": "split",
     "children": [
       {
-        "id": "fd1723d66f5bd787",
+        "id": "f7326d9cf7bbb755",
         "type": "tabs",
         "children": [
           {
-            "id": "7f909cd738516f42",
+            "id": "58e13a1aed71c24f",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "0fd1bd8453f5a221",
+            "id": "5f8a66dea704d6bc",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "5d455da970c95693",
+            "id": "ec9257ecf2cdb817",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,19 +81,20 @@
     "width": 300
   },
   "right": {
-    "id": "3b120418f2f79eec",
+    "id": "5bcc5c90a83cc4a8",
     "type": "split",
     "children": [
       {
-        "id": "b657ead0b9b6d850",
+        "id": "7b8c8930ed8f37ab",
         "type": "tabs",
         "children": [
           {
-            "id": "2bf14b0a2655dde0",
+            "id": "d56104f67aed948a",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "docs/intro.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,24 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for intro"
             }
           },
           {
-            "id": "4098671d08683dc3",
+            "id": "2bbbcbbcb9d520bb",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "docs/intro.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from intro"
             }
           },
           {
-            "id": "68113dc805edeef0",
+            "id": "a29665658536caa6",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -135,17 +137,18 @@
             }
           },
           {
-            "id": "851b6d1b410984a0",
+            "id": "ce6b363d6f01d695",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
+                "file": "docs/intro.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of intro"
             }
           }
         ]
@@ -166,33 +169,13 @@
       "obsidiosaurus:Obsidiosaurus": false
     }
   },
-  "active": "b9767130f1c56dce",
+  "active": "6cadd10b418a1d4d",
   "lastOpenFiles": [
-    "intro.md",
-    "کتاب ها/docker_in_action.md",
-    "کتاب ها/intro.md",
-    "نرم‌افزار/Rabbitmq.md",
-    "عمومی/مدیریت_زمان_از_نگاه_سنکا.md",
-    "عمومی/بخش_تاریک_روان_از_دیدگاه_یونگ.md",
-    "نرم‌افزار/جاوااسکریپت/RAIL.md",
-    "نرم‌افزار/جاوااسکریپت/Parsing.md",
-    "نرم‌افزار/جاوااسکریپت/PWA.md",
-    "نرم‌افزار/جاوااسکریپت/layout_thrashing.md",
-    "نرم‌افزار/جاوااسکریپت/nextjs.md",
-    "نرم‌افزار/جاوااسکریپت/Garbage_Collection.md",
-    "نرم‌افزار/جاوااسکریپت/Browser_Optimization.md",
-    "نرم‌افزار/جاوااسکریپت/01._js_interview_question.md",
-    "نرم‌افزار/دیتابیس/Tips.md",
-    "نرم‌افزار/دیتابیس/Shard.md",
-    "نرم‌افزار/دیتابیس/Replica.md",
-    "Load Balance.md",
-    "نرم‌افزار/دیتابیس/Partitioning.md",
-    "نرم‌افزار/دیتابیس/Materlized_view.md",
-    "نرم‌افزار/دیتابیس/Isolation_Level.md",
-    "نرم‌افزار/دیتابیس/Index_DB.md",
-    "نرم‌افزار/دیتابیس/Engine.md",
-    "نرم‌افزار/دیتابیس/Denormalization.md",
-    "نرم‌افزار/دیتابیس/Cursor.md",
-    "نرم‌افزار/دیتابیس/CAP.md"
+    "docs/نرم‌افزار/عمومی/intro.md",
+    "docs/نرم‌افزار/عمومی/intro.md.md",
+    "docs/نرم‌افزار/عمومی/Untitled.md",
+    "docs/نرم‌افزار/سیستم‌عامل/Garbage_Collection.md",
+    "docs/نرم‌افزار/عمومی/Cyclomatic_complexity.md",
+    "docs/نرم‌افزار/سیستم‌عامل/Cyclomatic_complexity.md"
   ]
 }

@@ -1,3 +1,9 @@
+---
+tags:
+  - js
+title: GC in Js
+---
+<span dir="ltr">
 In software engineering, _garbage_ refers to variables and references that are no longer in use. These leftover values still take up memory and should be cleaned up, either manually (in low-level languages like C or C++) or automatically (in higher-level languages like JavaScript).
 
 JavaScript handles memory automatically through a built-in process called **garbage collection**. As a developer, you don’t need to explicitly free memory, but understanding how the garbage collector works can help you avoid memory leaks and write more efficient, performant code.
@@ -32,5 +38,6 @@ To reduce the chances of hitting performance problems, it’s important to write
 - **`console.memory`**: Check memory usage in Chrome at runtime. Not precise, but useful for tracking trends.
 
 
-part 2 
-weakmap/weak set
+</span>
+
+
