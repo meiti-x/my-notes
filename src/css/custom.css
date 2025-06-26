@@ -63,6 +63,10 @@ mark {
   color: white;
 }
 
+mark[data-markjs="true"] {
+  background-color: #abab0f;
+}
+
 .theme-last-updated {
   background-color: #fcfcfc;
   padding: 10px;

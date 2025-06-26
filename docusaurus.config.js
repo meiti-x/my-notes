@@ -128,6 +128,29 @@ const config = {
       },
     ],
   ],
+
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      {
+        indexDocs: true,
+        docsRouteBasePath: "/docs",
+
+        indexBlog: false,
+        indexPages: false,
+        language: "en",
+        hashed: true,
+
+        searchBarShortcut: true,
+        searchBarShortcutHint: true,
+        highlightSearchTermsOnTargetPage: true,
+
+        explicitSearchResultPath: false,
+        searchResultLimits: 10,
+        searchResultContextMaxLength: 50,
+      },
+    ],
+  ],
 };
 
 export default config;
