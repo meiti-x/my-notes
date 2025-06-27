@@ -54,6 +54,28 @@ p {
   color: #333;
 }
 
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] [class^="admonitionHeading"] {
+  color: #e0e0e0 !important;
+}
+
+html[data-theme="dark"] p {
+  color: #a9a9a9;
+}
+
+html[data-theme="dark"] .theme-last-updated {
+  background-color: #1c1c1c;
+  border: 1px solid #808080;
+  display: block;
+  margin-top: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 mark {
   padding: 1px 5px;
   margin: 0 1px;
@@ -75,11 +97,4 @@ mark[data-markjs="true"] {
   display: block;
   margin-top: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.docs-tags-doc-list-page article {
-  border-radius: 15px;
-  border: 1px solid var(--ifm-color-primary-lightest);
-  background: #c3e2fb;
-  padding: 15px 10px;
 }
