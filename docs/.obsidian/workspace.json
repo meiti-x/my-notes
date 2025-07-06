@@ -39,10 +39,14 @@
             "id": "bc4a0e78ca461c79",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "نرم‌افزار/سیستم‌عامل/UFS.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "UFS"
             }
           }
         ],
@@ -191,14 +195,15 @@
       "obsidiosaurus:Obsidiosaurus": false
     }
   },
-  "active": "bc4a0e78ca461c79",
+  "active": "7f909cd738516f42",
   "lastOpenFiles": [
+    "نرم‌افزار/سیستم‌عامل/UFS.md",
     "drafts/ufs.md",
-    "drafts",
     "عمومی/نوروساینس/واقعیت.md",
+    "عمومی/نوروساینس/خاطرات.md",
+    "drafts",
     "عمومی/نوروساینس/مقدمه.md",
     "عمومی/نوروساینس/مدیتیشن.md",
-    "عمومی/نوروساینس/خاطرات.md",
     "عمومی/فلسفه/مدیریت_زمان_از_نگاه_سنکا.md",
     "عمومی/فلسفه/بخش_تاریک_روان_از_دیدگاه_یونگ.md",
     "عمومی/اجتماعی/فاشیست.md",
@@ -226,7 +231,6 @@
     "عمومی/Untitled.md",
     "Untitled.md",
     "کتاب ها/Concurrency_in_GO.md",
-    "کتاب ها/docker_in_action.md",
-    "intro.md"
+    "کتاب ها/docker_in_action.md"
   ]
 }

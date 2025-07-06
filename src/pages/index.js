@@ -5,7 +5,7 @@ import Layout from "@theme/Layout";
 const githubUsername = "meiti-x";
 const profileImgUrl = `https://github.com/${githubUsername}.png`;
 const email = "meiitiix@gmail.com";
-const telegramChannel = "https://t.me/meitix";
+const telegramChannel = "https://t.me/meiti_x";
 const githubProfile = `https://github.com/${githubUsername}`;
 
 export default function Home() {
