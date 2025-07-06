@@ -2,14 +2,14 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 
+const githubUsername = "meiti-x";
+const profileImgUrl = `https://github.com/${githubUsername}.png`;
+const email = "meiitiix@gmail.com";
+const telegramChannel = "https://t.me/meitix";
+const githubProfile = `https://github.com/${githubUsername}`;
+
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-
-  const githubUsername = "meiti-x";
-  const profileImgUrl = `https://github.com/${githubUsername}.png`;
-  const email = "meiitiix@gmail.com";
-  const telegramChannel = "https://t.me/meitix";
-  const githubProfile = `https://github.com/${githubUsername}`;
 
   return (
     <Layout
@@ -22,7 +22,7 @@ export default function Home() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          padding: "4rem 1rem",
+          padding: "1rem .2rem",
           flexDirection: "column",
         }}
       >
@@ -47,7 +47,7 @@ export default function Home() {
               transition: "all 0.3s ease",
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.transform = "scale(1.3)";
+              e.currentTarget.style.transform = "scale(1.1)";
               e.currentTarget.style.borderRadius = "10%";
             }}
             onMouseOut={(e) => {
@@ -56,7 +56,7 @@ export default function Home() {
             }}
           />
         </a>
-        <p style={{ fontSize: "1rem", color: "#666" }}>
+        <p style={{ fontSize: "1rem", color: "#666", marginBottom: ".1rem" }}>
           <span style={{ marginLeft: "0.5rem" }}>✉️</span>
           <a
             href={`mailto:${email}`}
@@ -65,12 +65,23 @@ export default function Home() {
             {email}
           </a>
         </p>
-        <h1 style={{ fontSize: "2.2rem", marginBottom: "1rem" }}>
+        <p style={{ fontSize: "1rem", color: "#007acc" }}>
+          📢{" "}
+          <a
+            href={telegramChannel}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+          >
+            کانال تلگرام من
+          </a>
+        </p>
+        <h1 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>
           به دنیای یادداشت‌های من خوش آمدید 👋🏻
         </h1>
         <p
           style={{
-            fontSize: "1.2rem",
+            fontSize: "1rem",
             maxWidth: "600px",
             textAlign: "center",
             lineHeight: "2",
