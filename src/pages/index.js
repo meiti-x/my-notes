@@ -22,7 +22,7 @@ export default function Home() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          padding: "1rem .2rem",
+          padding: "1rem",
           flexDirection: "column",
         }}
       >
