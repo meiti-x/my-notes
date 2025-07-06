@@ -1,41 +1,28 @@
-# Website
+# 🧠 my-notes
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Welcome to `my-notes` — my personal knowledge management system (KMS), second brain, and digital garden. This repository is where I ([@meitix](https://github.com/meitix)) document what I learn, explore ideas, and keep references for future me.
 
-## Installation
+Whether it's software engineering, systems design, DevOps, neuroscience, philosophy, or just random insights — you'll find them all here, structured and searchable.
 
-```bash
-yarn
-```
+---
 
-## Local Development
+## 🌱 Why I Built This
 
-```bash
-yarn start
-```
+Inspired by the [Second Brain](https://www.buildingasecondbrain.com/) concept, this repo is:
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+- A **learning log** for concepts I study
+- A **reference hub** I can return to anytime
+- A place to **connect ideas across domains**
+- A tool to make thinking **tangible and revisitable**
 
-## Build
+It helps me:
 
-```bash
-yarn build
-```
+- Learn actively by writing
+- Remember more by organizing
+- Build long-term personal knowledge
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+---
 
-## Deployment
+## 📁 Structure
 
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+The notes are generally organized by topic and tags

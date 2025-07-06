@@ -46,7 +46,7 @@ const config = {
           sidebarPath: "./sidebars.js",
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
-          exclude: isProd ? ["عمومی/**", "drafts/*.md"] : [],
+          exclude: isProd ? ["drafts/*.md"] : [],
         },
         sitemap: {
           changefreq: "weekly",

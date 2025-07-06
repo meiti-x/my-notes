@@ -1,39 +1,93 @@
-import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import GitHubProfile from "@site/src/components/GitHubProfile";
-import styles from "./index.module.css";
-
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
-          >
-            شروع به خواندن
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
+
+  const githubUsername = "meiti-x";
+  const profileImgUrl = `https://github.com/${githubUsername}.png`;
+  const email = "meiitiix@gmail.com";
+  const telegramChannel = "https://t.me/meitix";
+  const githubProfile = `https://github.com/${githubUsername}`;
+
   return (
     <Layout
       title={`${siteConfig.title} - Portfolio`}
       description="Personal portfolio and documentation site"
     >
-      <main>
-        <GitHubProfile />
+      <main
+        style={{
+          direction: "rtl",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "4rem 1rem",
+          flexDirection: "column",
+        }}
+      >
+        <a
+          href={githubProfile}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-block",
+            transition: "transform 0.3s ease",
+          }}
+        >
+          <img
+            src={profileImgUrl}
+            alt="GitHub profile"
+            style={{
+              width: "140px",
+              height: "140px",
+              borderRadius: "50%",
+              marginBottom: "1.5rem",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "scale(1.3)";
+              e.currentTarget.style.borderRadius = "10%";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.borderRadius = "50%";
+            }}
+          />
+        </a>
+        <p style={{ fontSize: "1rem", color: "#666" }}>
+          <span style={{ marginLeft: "0.5rem" }}>✉️</span>
+          <a
+            href={`mailto:${email}`}
+            style={{ color: "#007acc", textDecoration: "none" }}
+          >
+            {email}
+          </a>
+        </p>
+        <h1 style={{ fontSize: "2.2rem", marginBottom: "1rem" }}>
+          به دنیای یادداشت‌های من خوش آمدید 👋🏻
+        </h1>
+        <p
+          style={{
+            fontSize: "1.2rem",
+            maxWidth: "600px",
+            textAlign: "center",
+            lineHeight: "2",
+          }}
+        >
+          سلام، من مهدی‌ام و اینجا باغچه دیجیتال منه🌿 <br />
+          جایی برای <strong>مستندسازی</strong> و <strong> سفری شخصی</strong> تو
+          دنیای مهندسی نرم‌افزار و فراتر از اون. این پروژه فقط درباره‌ی کد و
+          تکنولوژی نیست، بلکه درباره‌ی کاوش در کنجکاوی های خودمم هست؛ جایی که
+          دانش فنی و تجربه‌های انسانی دست به دست هم می‌دن. اینجا چیزهایی که یاد
+          می‌گیرم رو مستندسازی می‌کنم ✍🏼 و دوست دارم این سفر رو با تو هم به
+          اشتراک بذارم🕊️
+        </p>
+
+        <Link className="button button--secondary button--lg" to="/docs/intro">
+          شروع به خواندن
+        </Link>
       </main>
     </Layout>
   );
