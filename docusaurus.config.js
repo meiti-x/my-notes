@@ -8,6 +8,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const isProd = process.env.NODE_ENV === "production";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "یادداشت های من",
@@ -44,6 +46,7 @@ const config = {
           sidebarPath: "./sidebars.js",
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
+          exclude: isProd ? ["عمومی/**", "drafts/*.md"] : [],
         },
         sitemap: {
           changefreq: "weekly",
