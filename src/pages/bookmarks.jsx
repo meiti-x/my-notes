@@ -30,10 +30,15 @@ export default function BookmarksPage() {
     category: "backend",
     imageUrl: "",
     description: "",
+    summaryLink: "",
   });
-  const [filters, setFilters] = useState({ type: "", category: "" });
+  const [filters, setFilters] = useState({
+    type: "",
+    category: "",
+    hasSummary: "",
+  });
   const [loading, setLoading] = useState(false);
-  const [opInProgress, setOpInProgress] = useState({}); // { [id]: true } for per-item ops
+  const [opInProgress, setOpInProgress] = useState({});
 
   useEffect(() => {
     fetchBookmarks();
@@ -50,12 +55,16 @@ export default function BookmarksPage() {
       if (filters.type) query = query.eq("type", filters.type);
       if (filters.category) query = query.eq("category", filters.category);
 
+      if (filters.hasSummary === "with") {
+        query = query.not("summary_link", "is", null);
+      } else if (filters.hasSummary === "without") {
+        query = query.is("summary_link", null);
+      }
       const { data, error } = await query;
       if (error) {
         console.error("fetchBookmarks error:", error);
         setBookmarks([]);
       } else {
-        // normalize missing is_checked column
         setBookmarks(
           (data || []).map((d) => ({ ...d, is_checked: !!d.is_checked }))
         );
@@ -81,6 +90,7 @@ export default function BookmarksPage() {
         category: form.category,
         imageUrl: form.imageUrl || null,
         description: form.description || null,
+        summary_link: form.summaryLink?.trim() || null,
       };
 
       const { error } = await supabase.from("bookmarks").insert([payload]);
@@ -95,6 +105,7 @@ export default function BookmarksPage() {
           category: "backend",
           imageUrl: "",
           description: "",
+          summaryLink: "",
         });
         fetchBookmarks();
       }
@@ -116,7 +127,6 @@ export default function BookmarksPage() {
         console.error("deleteBookmark error:", error);
         alert("Failed to delete (see console).");
       }
-      // refresh
       fetchBookmarks();
     } finally {
       setOpInProgress((prev) => {
@@ -129,12 +139,10 @@ export default function BookmarksPage() {
 
   async function toggleChecked(b) {
     const newVal = !b.is_checked;
-    // optimistic UI
     setBookmarks((prev) =>
       prev.map((x) => (x.id === b.id ? { ...x, is_checked: newVal } : x))
     );
     setOpInProgress((prev) => ({ ...prev, [b.id]: true }));
-
     try {
       const { error } = await supabase
         .from("bookmarks")
@@ -142,7 +150,6 @@ export default function BookmarksPage() {
         .eq("id", b.id);
       if (error) {
         console.error("toggleChecked error:", error);
-        // revert if failed
         setBookmarks((prev) =>
           prev.map((x) => (x.id === b.id ? { ...x, is_checked: !newVal } : x))
         );
@@ -156,21 +163,48 @@ export default function BookmarksPage() {
     }
   }
 
+  async function promptAddOrEditSummary(b) {
+    const current = b.summary_link || "";
+    const url = window.prompt("Enter summary URL (full URL)", current);
+    if (url === null) return; // cancelled
+    const trimmed = url.trim();
+    setOpInProgress((prev) => ({ ...prev, [`${b.id}-summary`]: true }));
+    setBookmarks((prev) =>
+      prev.map((x) =>
+        x.id === b.id ? { ...x, summary_link: trimmed || null } : x
+      )
+    );
+    try {
+      const { error } = await supabase
+        .from("bookmarks")
+        .update({ summary_link: trimmed || null })
+        .eq("id", b.id);
+      if (error) {
+        console.error("update summary error:", error);
+        alert("Failed to update summary link (see console).");
+        // revert by refetching
+        fetchBookmarks();
+      }
+    } finally {
+      setOpInProgress((prev) => {
+        const copy = { ...prev };
+        delete copy[`${b.id}-summary`];
+        return copy;
+      });
+    }
+  }
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // check if user is already logged in
     supabase.auth
       .getSession()
       .then(({ data }) => setUser(data.session?.user ?? null));
-
-    // listen for changes (login/logout)
     const { data: listener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         setUser(session?.user ?? null);
       }
     );
-
     return () => listener.subscription.unsubscribe();
   }, []);
 
@@ -197,7 +231,7 @@ export default function BookmarksPage() {
 
   return (
     <div className={styles.container} dir="ltr">
-      <button type="submit" onClick={signOut}>
+      <button type="button" onClick={signOut}>
         sign out
       </button>
       <header className={styles.header}>
@@ -265,7 +299,9 @@ export default function BookmarksPage() {
             </button>
           </form>
         </div>
+
         <hr />
+
         <div className={styles.filters}>
           <select
             value={filters.type}
@@ -295,6 +331,19 @@ export default function BookmarksPage() {
                 {c.icon} {c.label}
               </option>
             ))}
+          </select>
+
+          <select
+            value={filters.hasSummary}
+            onChange={(e) =>
+              setFilters({ ...filters, hasSummary: e.target.value })
+            }
+            className={styles.select}
+            aria-label="Filter by summary"
+          >
+            <option value="">All</option>
+            <option value="with">With summary</option>
+            <option value="without">Without summary</option>
           </select>
 
           <button
@@ -348,6 +397,7 @@ export default function BookmarksPage() {
                   <div className={styles.cardHead}>
                     <h3 className={styles.cardTitle}>{b.name}</h3>
                   </div>
+
                   <span className={styles.categoryChip}>
                     {CATEGORIES.find((c) => c.value === b.category)?.icon}{" "}
                     {CATEGORIES.find((c) => c.value === b.category)?.label ||
@@ -357,15 +407,28 @@ export default function BookmarksPage() {
                   <p className={styles.cardDesc}>{b.description}</p>
 
                   <div className={styles.cardFooter}>
-                    <a
-                      href={b.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={styles.linkBtn}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Open
-                    </a>
+                    {b.summary_link ? (
+                      <a
+                        href={b.summary_link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.summaryBtn}
+                        title="Open summary"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        View Summary
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        className={styles.summaryAddBtn}
+                        onClick={() => promptAddOrEditSummary(b)}
+                        disabled={!!opInProgress[`${b.id}-summary`]}
+                        title="Add summary link"
+                      >
+                        add summary
+                      </button>
+                    )}
 
                     <button
                       type="button"
@@ -385,18 +448,8 @@ export default function BookmarksPage() {
                       className={styles.deleteBtn}
                       onClick={() => deleteBookmark(b.id)}
                       disabled={!!opInProgress[b.id]}
-                      title="Delete"
                     >
                       {opInProgress[b.id] ? "Deleting..." : "Delete"}
-                    </button>
-
-                    <button
-                      type="button"
-                      className={styles.copyBtn}
-                      onClick={() => navigator.clipboard?.writeText(b.url)}
-                      title="Copy URL"
-                    >
-                      Copy
                     </button>
                   </div>
                 </div>
