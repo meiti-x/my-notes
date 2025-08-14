@@ -98,3 +98,8 @@ mark[data-markjs="true"] {
   margin-top: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+hr {
+  margin: 25px 0;
+  background-color: #e0e0e0;
+}

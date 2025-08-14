@@ -96,7 +96,11 @@ export default function Home() {
           اشتراک بذارم🕊️
         </p>
 
-        <Link className="button button--secondary button--lg" to="/docs/intro">
+        <Link
+          style={{ marginTop: "25px" }}
+          className="button button--secondary button--lg"
+          to="/docs/intro"
+        >
           شروع به خواندن
         </Link>
       </main>
