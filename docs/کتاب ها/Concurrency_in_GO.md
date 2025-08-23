@@ -103,7 +103,80 @@ INSERT INTO users (id, name, balance) VALUES (1, 'Ali', 100);
 ## 2. Modeling your Code: Communicating Sequentional Process
 
 ## 3. Go's Concurrency Building Blocks
+### goroutine
+گوروتین ها پایه ای ترین واحد در برنامه های goی هستن. هر برنامه ای که ما ایجاد میکنیم حداقل داخل یک گوروتین اجرا میشه. گورتین ها **green thread** هستن که توسط runtime مدیریت میشه. گو از M/N model برای برنامه ریزی استفاده میکنه به این معنی که که n تا green thread به mتا thread واقعی مپ میشن یعنی در حین این مپپینگ ممکنه کد ما parallel یا concurrent اجرا شه که تصمیمش در اختیار runtime گو هستش
 
+>**concurrency is a property of the code; parallelism is a property of the running program**
+
+ما کدمون رو بصورت کانکارنت مینویسم و امیدواریم که به صورت paralel اجرا شه
+
+:::tip
+**آیا همیشه paralelism از concurrency بهتره؟**
+
+قطعا خیر. parallelism برای مسائلی هستش که CPU-bound هستن یعنی پردازش موازی باعث افزایش سرعت پراسس میشن ولی کانکارنسی برای مسائل IO-Bound هستن مثلا تا زمانی که کانکشن دیتابیس آماده نشده یه کار دیگه بکنیم
+:::
+
+#### Fork-join Model
+تو Go، مدل fork-join یعنی کار اصلی رو به چند goroutine تقسیم می‌کنی (fork) و بعد صبر می‌کنی همه تموم شن تا ادامه بدی (join). join می‌تونه با `WaitGroup` یا channel انجام بشه، و بدون هیچ sync، ممکنه go-routine ها اجرا نشن چون main زود تموم میشه.
+
+~~~go
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+// worker simulates some work for a given ID
+func worker(id int, wg *sync.WaitGroup) {
+	defer wg.Done() // signal that this goroutine is done
+	fmt.Printf("Worker %d started\n", id)
+	// simulate some work
+	// time.Sleep(time.Second) // optional
+	fmt.Printf("Worker %d finished\n", id)
+}
+
+func main() {
+	var wg sync.WaitGroup
+
+	// Fork: start multiple goroutines
+	for i := 1; i <= 5; i++ {
+		wg.Add(1)        // increment WaitGroup counter
+		go worker(i, &wg) // start goroutine
+	}
+
+	// Join: wait for all goroutines to finish
+	wg.Wait()
+
+	fmt.Println("All workers finished, continue main flow...")
+}
+
+~~~
+
+
+#### Mutex and RWMutex
+
+تو Go، `Mutex` و `RWMutex` ابزارهایی برای همزمانی هستن که دسترسی سیف به داده‌های مشترک رو فراهم می‌کنن. `Mutex` یا همون "mutual exclusion" وقتی استفاده می‌شه که می‌خوای یه بخش کد رو به صورت **انحصاری** محافظت کنی؛ یعنی وقتی یه goroutine `Lock()` می‌کنه، بقیه باید صبر کنن تا `Unlock()` بشه. معمولاً از `defer lock.Unlock()` استفاده می‌کنن تا حتی اگه فانکشن panic کنه، قفل آزاد بشه.
+
+ا`RWMutex` یا "Read/Write Mutex" مشابه `Mutex` عمل می‌کنه ولی با کنترل دقیق‌تر: چند goroutine می‌تونن همزمان داده‌ها رو بخونن (`RLock()`)، ولی وقتی یه goroutine بخواد بنویسه (`Lock()`)، دسترسی همه خواننده‌ها و نویسنده‌های دیگه مسدود می‌شه. این باعث می‌شه تو سناریوهایی که تعداد خواننده‌ها زیاده و نویسنده‌ها کم، عملکرد بهتر باشه.
+
+هر دو برای همگام‌سازی حافظه در مقیاس کوچک و محلی مفید هستن و مکمل ابزارهای همزمانی دیگه مثل channelها هستن. Go اصولاً توصیه می‌کنه "share memory by communicating" ولی وقتی لازم باشه، این قفل‌ها ابزار مناسبی هستن.
+
+:::note
+برای سیگنال دادن تو Go از struct{} استفاده می‌کنن چون حجمش صفره و حافظه اضافه مصرف نمی‌کنه، علاوه بر اینکه مشخص می‌کنه فقط وجود سیگنال مهمه و مقدارش اهمیتی نداره، بر خلاف bool که ممکنه باعث سردرگمی یا مصرف حافظه اضافی بشه.
+
+~~~go
+done := make(chan struct{})
+done <- struct{}{} // send signal
+<-done             // receive signal
+~~~
+:::
+
+#### Cond
+
+#### Once
+
+#### Pool
 ## 4. Concurrency patterns in Go
 
 ## 5. Concurrency at Scale

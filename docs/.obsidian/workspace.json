@@ -27,12 +27,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "نرم‌افزار/سیستم‌دیزاین/Patterns/Strategy.md",
+                "file": "کتاب ها/Concurrency_in_GO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Strategy"
+              "title": "Concurrency_in_GO"
+            }
+          },
+          {
+            "id": "de8702e44cde2b3a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "نرم‌افزار/سیستم‌عامل/UFS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "UFS"
             }
           },
           {
@@ -96,7 +110,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Book",
+                "query": "tip",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -200,6 +214,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -209,10 +224,12 @@
       "obsidiosaurus:Obsidiosaurus": false
     }
   },
-  "active": "5688e0c212fb0ed2",
+  "active": "7f909cd738516f42",
   "lastOpenFiles": [
-    "نرم‌افزار/سیستم‌دیزاین/Patterns/Anti-corruption Layer pattern.md",
+    "نرم‌افزار/سیستم‌عامل/UFS.md",
+    "کتاب ها/Concurrency_in_GO.md",
     "نرم‌افزار/سیستم‌دیزاین/Patterns/Strategy.md",
+    "نرم‌افزار/سیستم‌دیزاین/Patterns/Anti-corruption Layer pattern.md",
     "عمومی/نوروساینس/احساسات.md",
     "عمومی/نوروساینس/واقعیت.md",
     "عمومی/نوروساینس/مدیتیشن.md",
@@ -228,7 +245,6 @@
     "نرم‌افزار/سیستم‌دیزاین/Patterns",
     "نرم‌افزار/عمومی/SOLID.md",
     "نرم‌افزار/عمومی/OWASP.md",
-    "نرم‌افزار/سیستم‌عامل/UFS.md",
     "drafts/ufs.md",
     "drafts",
     "عمومی/نوروساینس/مقدمه.md",
@@ -244,7 +260,6 @@
     "general/نوروساینس/مقدمه.md",
     "general/نوروساینس/مدیتیشن.md",
     "general/نوروساینس/خاطرات.md",
-    "general/فلسفه/مدیریت_زمان_از_نگاه_سنکا.md",
     "general/نوروساینس",
     "general/فلسفه"
   ]
