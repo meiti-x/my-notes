@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "کتاب ها/Concurrency_in_GO.md",
+                "file": "عمومی/توسعه فردی/صحبت کردن.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Concurrency_in_GO"
+              "title": "صحبت کردن"
             }
           },
           {
@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -224,21 +224,22 @@
       "obsidiosaurus:Obsidiosaurus": false
     }
   },
-  "active": "7f909cd738516f42",
+  "active": "de8702e44cde2b3a",
   "lastOpenFiles": [
-    "نرم‌افزار/سیستم‌عامل/UFS.md",
+    "عمومی/توسعه فردی/صحبت کردن.md",
     "کتاب ها/Concurrency_in_GO.md",
+    "عمومی/نوروساینس/احساسات.md",
+    "نرم‌افزار/سیستم‌دیزاین/Caching.md",
+    "نرم‌افزار/سیستم‌عامل/UFS.md",
+    "عمومی/توسعه فردی",
+    "draft/Untitled.md",
     "نرم‌افزار/سیستم‌دیزاین/Patterns/Strategy.md",
     "نرم‌افزار/سیستم‌دیزاین/Patterns/Anti-corruption Layer pattern.md",
-    "عمومی/نوروساینس/احساسات.md",
     "عمومی/نوروساینس/واقعیت.md",
     "عمومی/نوروساینس/مدیتیشن.md",
     "عمومی/نوروساینس/خاطرات.md",
     "عمومی/اجتماعی/فاشیست.md",
     "عمومی/فلسفه/بخش_تاریک_روان_از_دیدگاه_یونگ.md",
-    "draft/Untitled.md",
-    "نرم‌افزار/سیستم‌دیزاین/Caching.md",
-    "Untitled",
     "draft",
     "نرم‌افزار/سیستم‌دیزاین/Bloom_Filters.md",
     "نرم‌افزار/عمومی/Cyclomatic_complexity.md",
@@ -258,8 +259,6 @@
     "عمومی",
     "general/نوروساینس/واقعیت.md",
     "general/نوروساینس/مقدمه.md",
-    "general/نوروساینس/مدیتیشن.md",
-    "general/نوروساینس/خاطرات.md",
     "general/نوروساینس",
     "general/فلسفه"
   ]
