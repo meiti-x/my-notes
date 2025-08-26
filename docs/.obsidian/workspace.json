@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "intro.md",
+                "file": "عمومی/توسعه فردی/صحبت کردن.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "intro"
+              "title": "صحبت کردن"
             }
           }
         ]
@@ -169,8 +169,8 @@
   },
   "active": "9fe549184c5b9c9e",
   "lastOpenFiles": [
-    "نرم‌افزار/عمومی/الگوریتم/A*.md",
     "intro.md",
+    "نرم‌افزار/عمومی/الگوریتم/A*.md",
     "نرم‌افزار/سیستم‌عامل/UFS.md",
     "عمومی/توسعه فردی/صحبت کردن.md",
     "کتاب ها/Concurrency_in_GO.md",
