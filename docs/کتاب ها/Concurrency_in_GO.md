@@ -179,6 +179,593 @@ done <- struct{}{} // send signal
 #### Pool
 ## 4. Concurrency patterns in Go
 
+> این راهنما هر کدوم از الگوهای کانکارنسی در Go که گفتی رو **خیلی مفصل** توضیح می‌ده: تعریف، موارد استفاده، نکات پروڈاکشن، تله‌های رایج، و مثال کد تمیز. کدها همه با `context` و تمهیدات ضد-leak نوشته شدن.
+
+---
+
+# 🔒 1) Confinement (Actor-style Ownership)
+
+**ایده:** یک goroutine «مالک» داده است؛ بقیه فقط از طریق پیام (channel) با این مالک حرف می‌زنند. قفل‌ها (mutex) به حداقل می‌رسند و invariants مرکزی ساده‌تر می‌شود.
+
+**کِی استفاده کنیم؟**
+
+- وقتی state اشتراکی حساس داریم (مثلاً `map`, LRU cache, حساب بانکی) و می‌خواهیم race نداشته باشیم.
+    
+- زمانی که throughput بالا ولی الگوی دسترسی ساده/سریالی است.
+    
+
+**مزایا:** ساده‌سازی reasoning، حذف deadlock کلاسیک، encapsulation.  
+**معایب:** ممکن است یک bottleneck سریالی بسازد؛ اگر latency یک پیام زیاد شود، همه صبر می‌کنند.
+
+**الگوی کلی (mini-actor):**
+
+```go
+package actor
+
+import (
+    "context"
+)
+
+type Command interface{}
+
+type Get struct{ Reply chan<- int }
+type Add struct{ N int }
+
+type Counter struct {
+    cmds chan Command
+}
+
+func NewCounter(buffer int) *Counter {
+    return &Counter{cmds: make(chan Command, buffer)}
+}
+
+func (c *Counter) Run(ctx context.Context) {
+    var val int
+    for {
+        select {
+        case <-ctx.Done():
+            return
+        case cmd := <-c.cmds:
+            switch m := cmd.(type) {
+            case Add:
+                val += m.N
+            case Get:
+                // non-blocking safety: اگر مصرف‌کننده crash کرد باعث deadlock نشویم
+                select {
+                case m.Reply <- val:
+                case <-ctx.Done():
+                    return
+                }
+            }
+        }
+    }
+}
+
+func (c *Counter) Add(n int) { c.cmds <- Add{N: n} }
+
+func (c *Counter) Get(ctx context.Context) (int, bool) {
+    reply := make(chan int, 1)
+    select {
+    case c.cmds <- Get{Reply: reply}:
+    case <-ctx.Done():
+        return 0, false
+    }
+    select {
+    case v := <-reply:
+        return v, true
+    case <-ctx.Done():
+        return 0, false
+    }
+}
+```
+
+**نکات پروڈاکشن:**
+
+- همیشه `ctx.Done()` را در loop چک کنید.
+    
+- کانال‌ها را bufferدار بگیرید تا backpressure مدیریت شود (بسته به SLA).
+    
+- از counters/metrics (مانند طول صف) برای capacity planning استفاده کنید.
+    
+
+---
+
+# 🔄 2) for-select Loop
+
+**الگو:** حلقه‌ی بی‌نهایت با `select` برای multiplex روی چند کانال + cancel.
+
+**نکات مهم:**
+
+- برای timeouts از `time.NewTimer`/`time.Ticker` استفاده کنید (نه `time.After` در حلقهٔ تنگ) تا leak تایمر ندهید.
+    
+- `default` در `select` یعنی non-blocking؛ با احتیاط استفاده کنید که busy-loop نسازید.
+    
+
+**مثال با heartbeat و idle-timeout درست:**
+
+```go
+func serve(ctx context.Context, in <-chan string, out chan<- string) error {
+    defer close(out)
+
+    heartbeat := time.NewTicker(5 * time.Second)
+    defer heartbeat.Stop()
+
+    idle := time.NewTimer(30 * time.Second)
+    defer idle.Stop()
+
+    resetIdle := func() {
+        if !idle.Stop() {
+            select { case <-idle.C: default: }
+        }
+        idle.Reset(30 * time.Second)
+    }
+
+    for {
+        select {
+        case <-ctx.Done():
+            return ctx.Err()
+        case <-heartbeat.C:
+            select { case out <- "ping": case <-ctx.Done(): return ctx.Err() }
+        case <-idle.C:
+            return errors.New("idle timeout")
+        case msg, ok := <-in:
+            if !ok { return nil }
+            resetIdle()
+            // پردازش msg
+            select { case out <- strings.ToUpper(msg): case <-ctx.Done(): return ctx.Err() }
+        }
+    }
+}
+```
+
+---
+
+# 🛑 3) Preventing Goroutine Leaks
+
+**مشکلات رایج:**
+
+- ا`range` روی کانالی که هرگز بسته نمی‌شود.
+    
+- اgoroutine منتظر روی send به کانال بدون مصرف‌کننده.
+    
+- استفاده از `time.After` در loop → ساختن تایمرهای رهاشده.
+    
+
+**راهکارها:**
+
+- همیشه `ctx.Done()` را در `select` بگذار.
+    
+- close مسیرهای خروجی را مدیریت کن.
+    
+- در تست‌ها از `go.uber.org/goleak` استفاده کن.
+    
+- برای fan-out/fan-in حتماً done/cancel داشته باش.
+    
+
+**الگوی پایهٔ anti-leak برای مصرف‌کننده:**
+
+```go
+func consume(ctx context.Context, in <-chan Item) {
+    for {
+        select {
+        case <-ctx.Done():
+            return
+        case it, ok := <-in:
+            if !ok { return }
+            _ = process(it)
+        }
+    }
+}
+```
+
+---
+
+# ⚡ 4) or-channel
+
+**مسئله:** چند سیگنال cancel/done داریم؛ می‌خواهیم اولین‌شان همه‌چیز را متوقف کند.
+
+**پیاده‌سازی ساده و امن (N goroutine + sync.Once):**
+
+```go
+func Or(chs ...<-chan struct{}) <-chan struct{} {
+    switch len(chs) {
+    case 0:
+        c := make(chan struct{})
+        close(c)
+        return c
+    case 1:
+        return chs[0]
+    }
+    out := make(chan struct{})
+    var once sync.Once
+
+    signal := func(ch <-chan struct{}) {
+        select {
+        case <-ch:
+            once.Do(func() { close(out) })
+        case <-out:
+        }
+    }
+
+    for _, ch := range chs {
+        go signal(ch)
+    }
+    return out
+}
+```
+
+**نکته:** برای request-scoped کارها، معمولاً به جای or-channel از یک `context` مشترک با `errgroup` استفاده می‌کنیم تا cancel آبشاری شود (تمیزتر).
+
+---
+
+# 🚨 5) اError Handling در کانکارنسی
+
+**الگوهای رایج:**
+
+- ا`errgroup.Group` از `golang.org/x/sync/errgroup` → cancel اتوماتیک با اولین خطا.
+    
+- کانال error با بافر 1 تا block نشود.
+    
+- جمع‌کردن چند خطا با `go.uber.org/multierr` (وقتی همهٔ کارها را می‌خواهی تمام کنی و بعد گزارش بدهی).
+    
+
+**مثال با errgroup + context:**
+
+```go
+import (
+    "golang.org/x/sync/errgroup"
+)
+
+func crawlAll(ctx context.Context, urls []string) error {
+    g, ctx := errgroup.WithContext(ctx)
+    sem := make(chan struct{}, 8) // محدودیت همزمانی
+
+    for _, u := range urls {
+        u := u
+        g.Go(func() error {
+            select { case sem <- struct{}{}: case <-ctx.Done(): return ctx.Err() }
+            defer func() { <-sem }()
+            body, err := fetch(ctx, u)
+            if err != nil { return err }
+            return store(ctx, u, body)
+        })
+    }
+    return g.Wait()
+}
+```
+
+---
+
+# 📦 6) Pipelines
+
+**ایده:** داده از چند مرحله می‌گذرد؛ هر مرحله goroutine خودش را دارد و از channel برای انتقال استفاده می‌کند.
+
+**نکات کلیدی:**
+
+- هر stage باید خروجی‌اش را ببندد وقتی input تمام شد.
+    
+- باید cancel را propagate کنی (با `ctx` یا `done`).
+    
+- backpressure خودبه‌خود با channel کنترل می‌شود.
+    
+
+**مثال:** read → parse → validate → write
+
+```go
+func gen(ctx context.Context, ns ...int) <-chan int {
+    out := make(chan int)
+    go func() {
+        defer close(out)
+        for _, n := range ns {
+            select { case out <- n: case <-ctx.Done(): return }
+        }
+    }()
+    return out
+}
+
+func sq(ctx context.Context, in <-chan int) <-chan int {
+    out := make(chan int)
+    go func() {
+        defer close(out)
+        for n := range in {
+            n := n
+            select { case out <- n * n: case <-ctx.Done(): return }
+        }
+    }()
+    return out
+}
+
+func pipeline(ctx context.Context) []int {
+    var res []int
+    for v := range sq(ctx, sq(ctx, gen(ctx, 1,2,3,4))) {
+        res = append(res, v)
+    }
+    return res
+}
+```
+
+**Production tips:**
+
+- برای stages سنگین، fan-out کن (چند نسخهٔ موازی همان stage).
+    
+- از metrics برای هر stage (QPS، latency، عمق صف) استفاده کن.
+    
+
+---
+
+# 🌪 7) Fan-Out, Fan-In (Worker Pool)
+
+**Fan-Out:** تقسیم کار بین چند worker.  
+**Fan-In:** ادغام خروجی چند worker به یک خروجی.
+
+**الگوی Worker Pool با محدودیت همزمانی و cancel:**
+
+```go
+type Job struct{ ID int }
+
+type Result struct{ ID int; Err error }
+
+func worker(ctx context.Context, id int, jobs <-chan Job, results chan<- Result) {
+    for {
+        select {
+        case <-ctx.Done():
+            return
+        case j, ok := <-jobs:
+            if !ok { return }
+            // simulate work
+            err := doJob(ctx, j)
+            select {
+            case results <- Result{ID: j.ID, Err: err}:
+            case <-ctx.Done():
+                return
+            }
+        }
+    }
+}
+
+func runPool(ctx context.Context, n int, jobsList []Job) []Result {
+    jobs := make(chan Job)
+    results := make(chan Result)
+
+    var wg sync.WaitGroup
+    wg.Add(n)
+    for i := 0; i < n; i++ {
+        i := i
+        go func() { defer wg.Done(); worker(ctx, i, jobs, results) }()
+    }
+
+    go func() {
+        defer close(jobs)
+        for _, j := range jobsList {
+            select { case jobs <- j: case <-ctx.Done(): return }
+        }
+    }()
+
+    go func() { wg.Wait(); close(results) }()
+
+    var out []Result
+    for r := range results { out = append(out, r) }
+    return out
+}
+```
+
+**نکات:**
+
+- ترتیب نتایج اگر مهم است، یک index نگه‌دار یا از ساختارهایی مثل `[]*Result` + sort استفاده کن.
+    
+- برای «دقیقاً یکبار» یا «حداقل یکبار» تحویل، semantics را روشن کن و idempotency سمت مصرف‌کننده داشته باش.
+    
+
+---
+
+# 🚪 8) or-done-channel
+
+وقتی از یک channel می‌خوانی ولی می‌خواهی هر لحظه بتوانی cancel کنی تا گیر نکنی.
+
+```go
+func OrDone[T any](done <-chan struct{}, in <-chan T) <-chan T {
+    out := make(chan T)
+    go func() {
+        defer close(out)
+        for {
+            select {
+            case <-done:
+                return
+            case v, ok := <-in:
+                if !ok { return }
+                select {
+                case out <- v:
+                case <-done:
+                    return
+                }
+            }
+        }
+    }()
+    return out
+}
+```
+
+**کاربرد:** در bridge/tee و هرجایی که خواندن بلاک‌کننده است.
+
+---
+
+# 🔀 9) tee-channel (کپی جریان به دو خروجی)
+
+**مسئله:** هر ورودی باید به دو مصرف‌کننده مستقل برود.
+
+```go
+func Tee[T any](done <-chan struct{}, in <-chan T) (<-chan T, <-chan T) {
+    out1 := make(chan T)
+    out2 := make(chan T)
+
+    go func() {
+        defer close(out1); defer close(out2)
+        for v := range OrDone(done, in) {
+            var o1, o2 = out1, out2
+            var v1, v2 = v, v
+            for i := 0; i < 2; i++ {
+                select {
+                case o1 <- v1:
+                    o1 = nil // جلوگیری از ارسال دوباره
+                case o2 <- v2:
+                    o2 = nil
+                case <-done:
+                    return
+                }
+            }
+        }
+    }()
+    return out1, out2
+}
+```
+
+**نکات:** اگر یکی از خروجی‌ها کند باشد، backpressure ایجاد می‌شود. اگر نمی‌خواهی، باید بافر و سیاست drop تعریف کنی.
+
+---
+
+# 🌉 10) bridge-channel (flatten کردن channel-of-channels)
+
+**مسئله:** یک channel داری که خودش channel تولید می‌کند (streamهای متعدد). می‌خواهی یک خروجی یکپارچه داشته باشی.
+
+```go
+func Bridge[T any](done <-chan struct{}, chanStream <-chan (<-chan T)) <-chan T {
+    out := make(chan T)
+    go func() {
+        defer close(out)
+        for ch := range OrDone(done, chanStream) {
+            for v := range OrDone(done, ch) {
+                select {
+                case out <- v:
+                case <-done:
+                    return
+                }
+            }
+        }
+    }()
+    return out
+}
+```
+
+**نکات:**
+
+- اگر یک زیرجریان hang کند، `OrDone` جلوی leak را می‌گیرد.
+    
+- می‌توان برای هر زیرجریان deadline جداگانه گذاشت.
+    
+
+---
+
+# 📥 11) Queuing 
+
+**گزینه‌ها:**
+
+- کانال بافر‌دار به عنوان صف bounded.
+    
+- اRing buffer برای کارایی بیشتر و حذف realloc (مثلاً `container/ring` یا پیاده‌سازی شخصی).
+    
+- اPriority Queue با `container/heap`.
+    
+
+**الگوی bounded queue با سیاست drop-new:**
+
+```go
+type Task struct{ ID int }
+
+type Queue struct{
+    ch chan Task
+}
+
+func NewQueue(n int) *Queue { return &Queue{ch: make(chan Task, n)} }
+
+// اگر صف پر باشد، تسکِ جدید drop می‌شود
+func (q *Queue) EnqueueNonBlocking(t Task) bool {
+    select {
+    case q.ch <- t:
+        return true
+    default:
+        return false
+    }
+}
+
+func (q *Queue) Dequeue(ctx context.Context) (Task, bool) {
+    select {
+    case t, ok := <-q.ch:
+        return t, ok
+    case <-ctx.Done():
+        return Task{}, false
+    }
+}
+```
+
+**سیاست‌ها:** drop-tail، drop-head، sampling، یا blocking با timeout. انتخاب سیاست به SLA/UX بستگی دارد.
+
+**نکات پروڈاکشن:**
+
+- metric طول صف + نرخ drop.
+    
+- alert وقتی عمق صف طولانی شد.
+    
+
+---
+
+# 🧰 12) پکیج `context`
+
+**اصول طلایی:**
+
+- ا`ctx` اولین آرگومان تابع.
+    
+-ا `context` را در struct نگه ندار؛ عبور بده.
+    
+- ا`context.Background()` فقط در لایه‌ی بوت/ریشه.
+    
+- اnil نده؛ اگر نداری `context.TODO()` بده.
+    
+- برای timeout از `WithTimeout`/`WithDeadline` استفاده کن؛ برای manual cancel از `WithCancel`.
+    
+- از `WithValue` فقط برای داده‌های request-scoped سبک (trace-id و ...) با کلید type-safe.
+    
+- از Go 1.20 به بعد: `context.WithCancelCause` و `context.Cause(ctx)` برای علت cancel.
+    
+
+**مثال cancel آبشاری با errgroup:**
+
+```go
+func doAll(ctx context.Context) error {
+    g, ctx := errgroup.WithContext(ctx)
+
+    g.Go(func() error { return taskA(ctx) })
+    g.Go(func() error { return taskB(ctx) })
+
+    // اگر یکی fail شود، ctx برای بقیه cancel می‌شود
+    return g.Wait()
+}
+```
+
+**pattern فراگیر در حلقه‌ها:**
+
+```go
+for {
+    select {
+    case <-ctx.Done():
+        return ctx.Err()
+    case msg := <-ch:
+        _ = handle(ctx, msg)
+    }
+}
+```
+
+---
+
+## نکات تکمیلی و Best Practices
+
+- **Metrics و Tracing:** کانکارنسی بدون observability دردسرساز است. برای هر stage/worker، latency/QPS/queue-depth داشته باش (Prometheus + OpenTelemetry).
+    
+- **Limits:** همیشه یک گلوگاه کنترل‌شده داشته باش (semaphore/buffer) تا از overload جلوگیری شود.
+    
+- **Testability:** با `context.WithTimeout` تست‌ها را fail-fast کن؛ از `goleak.VerifyNone` بعد از تست‌ها استفاده کن.
+    
+- **T
+
 ## 5. Concurrency at Scale
 
 ## 6. Goroutines and the Go runtime
