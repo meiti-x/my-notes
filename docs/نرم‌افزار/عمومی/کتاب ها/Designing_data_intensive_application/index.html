@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fa" dir="rtl" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-نرم‌افزار/عمومی/کتاب ها/Designing_data_intensive_application" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.0">
+<title data-rh="true">Designing data intensive application | یادداشت های من</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://github.com/meiti-x.png"><meta data-rh="true" name="twitter:image" content="https://github.com/meiti-x.png"><meta data-rh="true" property="og:url" content="https://meiti-x.github.io/my-notes/docs/نرم‌افزار/عمومی/کتاب ها/Designing_data_intensive_application"><meta data-rh="true" property="og:locale" content="fa"><meta data-rh="true" name="docusaurus_locale" content="fa"><meta data-rh="true" name="docsearch:language" content="fa"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Designing data intensive application | یادداشت های من"><meta data-rh="true" name="description" content="برداشت های من از کتاب Designing data intensive application"><meta data-rh="true" property="og:description" content="برداشت های من از کتاب Designing data intensive application"><link data-rh="true" rel="icon" href="/my-notes/img/docusaurus.png"><link data-rh="true" rel="canonical" href="https://meiti-x.github.io/my-notes/docs/نرم‌افزار/عمومی/کتاب ها/Designing_data_intensive_application"><link data-rh="true" rel="alternate" href="https://meiti-x.github.io/my-notes/docs/نرم‌افزار/عمومی/کتاب ها/Designing_data_intensive_application" hreflang="fa"><link data-rh="true" rel="alternate" href="https://meiti-x.github.io/my-notes/docs/نرم‌افزار/عمومی/کتاب ها/Designing_data_intensive_application" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Designing data intensive application","item":"https://meiti-x.github.io/my-notes/docs/نرم‌افزار/عمومی/کتاب ها/Designing_data_intensive_application"}]}</script><link rel="alternate" type="application/rss+xml" href="/my-notes/blog/rss.xml" title="یادداشت های من RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/my-notes/blog/atom.xml" title="یادداشت های من Atom Feed">
+
+
+
+
+<link rel="icon" href="/my-notes/img/docusaurus.png">
+<link rel="manifest" href="/my-notes/manifest.json">
+<meta name="theme-color" content="rgb(37, 194, 160)"><link rel="stylesheet" href="/my-notes/assets/css/styles.f20f4f92.css">
+<script src="/my-notes/assets/js/runtime~main.68b0a04d.js" defer="defer"></script>
+<script src="/my-notes/assets/js/main.a5e89928.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="https://m.media-amazon.com/images/I/91YfNb49PLL._SL1500_.jpg"><div role="region" aria-label="پرش به مطلب اصلی"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">پرش به مطلب اصلی</a></div><nav aria-label="صفحه اصلی" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="باز و بست منو" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my-notes/"><b class="navbar__title text--truncate">صفحه اصلی</b></a><a class="navbar__item navbar__link" href="/my-notes/docs/intro">مستندات</a><a class="navbar__item navbar__link" href="/my-notes/docs/tags">تگ ها</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/meiti-x" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="بین حالت تاریک و روشن سوئیچ کنید (الان system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="بازگشت به بالا" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="نوار کناری مستندات" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my-notes/docs/draft/Untitled">draft</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my-notes/docs/intro">مقدمه</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/my-notes/docs/عمومی/اجتماعی/امپریالیسم">عمومی</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/my-notes/docs/نرم‌افزار/دیتابیس/ACID">نرم‌افزار</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/my-notes/docs/نرم‌افزار/دیتابیس/ACID">دیتابیس</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/my-notes/docs/نرم‌افزار/سیستم‌دیزاین/Bloom_Filters">سیستم‌دیزاین</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/my-notes/docs/نرم‌افزار/سیستم‌عامل/Brust_time">سیستم‌عامل</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/Availability">عمومی</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/Availability">Availability</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/Cyclomatic_complexity">Cyclomatic_complexity</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/Docker">Docker</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/OWASP">OWASP</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/SOLID">SOLID</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/googling">googling</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/الگوریتم/A*">الگوریتم</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/جاوااسکریپت/js_interview_question">جاوااسکریپت</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/کتاب ها/Designing_data_intensive_application">کتاب ها</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/کتاب ها/Designing_data_intensive_application">Designing data intensive application</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/my-notes/docs/نرم‌افزار/عمومی/گو/Conncurrency">گو</a></div></li></ul></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="نشانگر صفحات"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="صفحه اصلی" class="breadcrumbs__link" href="/my-notes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">نرم‌افزار</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">عمومی</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">کتاب ها</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Designing data intensive application</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">مطالب این صفحه</button></div><div class="theme-doc-markdown markdown"><header><h1>Designing data intensive application</h1></header><img src="https://m.media-amazon.com/images/I/91YfNb49PLL._SL1500_.jpg" height="500">
+<p><strong>نام کتاب</strong>: Designing data intensive application</p>
+<p><strong>سال چاپ</strong>:۱۳۹۷</p>
+<p><strong>سال خوندن من</strong>: در حال خوندن</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="فصل-۱-reliable-scalable-و-maintainable-applications">فصل ۱: <strong>Reliable، Scalable و Maintainable Applications</strong><a href="#فصل-۱-reliable-scalable-و-maintainable-applications" class="hash-link" aria-label="لینک مستقیم به فصل-۱-reliable-scalable-و-maintainable-applications" title="لینک مستقیم به فصل-۱-reliable-scalable-و-maintainable-applications">​</a></h2>
+<p>این فصل اول کتاب <em>Designing Data-Intensive Applications</em> نوشته‌ی Martin Kleppmann هست و پایه‌ای‌ترین مفاهیم مربوط به سیستم‌های داده‌ای رو توضیح می‌ده. این فصل در واقع هم اصطلاحات رو روشن می‌کنه و هم مسیر بقیه‌ی کتاب رو مشخص می‌کنه، با این تمرکز که Reliability، Scalability و Maintainability دقیقاً یعنی چی و چطور می‌شه بهشون رسید.</p>
+<p>امروزه خیلی از اپلیکیشن‌ها <strong>data-intensive</strong> هستن. یعنی محدودیت اصلیشون CPU نیست؛ مشکل معمولاً از حجم زیاد دیتا، پیچیدگی اون یا سرعت تغییراتش میاد. برای اینکه بتونیم اپلیکیشن‌های data-intensive موفق بسازیم، کتاب روی سه موضوع کلیدی تمرکز می‌کنه:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="reliability"><strong>Reliability</strong><a href="#reliability" class="hash-link" aria-label="لینک مستقیم به reliability" title="لینک مستقیم به reliability">​</a></h3>
+<p>سیستمی که reliable باشه حتی وقتی مشکل پیش میاد هم درست کار می‌کنه، وظیفه‌هاش رو انجام می‌ده و سطح performance قابل‌قبولش رو حفظ می‌کنه. این یعنی بتونه خطاهای مختلف رو تحمل کنه، مثل:</p>
+<ul>
+<li>
+<p><strong>Hardware faults</strong>: مثل سوختن هارد، خرابی RAM، قطع برق یا حتی کابل برق که یکی اشتباهی می‌کشه بیرون! اینا تو دیتاسنترهای بزرگ خیلی رایجه.</p>
+</li>
+<li>
+<p><strong>Software errors (bugs)</strong>: معمولاً سیستمی هستن و نسبت به خطاهای سخت‌افزاری دردسر بیشتری دارن.</p>
+</li>
+<li>
+<p><strong>Human errors</strong>: خطاهای انسانی همیشه بخشی از کار هستن. سیستم‌های robust طوری طراحی می‌شن که احتمال خطای انسانی کم بشه و اگر هم اتفاق افتاد سریع بشه ریکاوری کرد.</p>
+</li>
+</ul>
+<p>برای افزایش Reliability معمولاً از تکنیک‌هایی مثل fault-tolerance، مانیتورینگ دقیق (telemetry) و همین‌طور مدیریت درست و آموزش تیم‌ها استفاده می‌شه.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="scalability"><strong>Scalability</strong><a href="#scalability" class="hash-link" aria-label="لینک مستقیم به scalability" title="لینک مستقیم به scalability">​</a></h3>
+<p>سیستمی که scalable باشه، وقتی دیتا یا ترافیک یا پیچیدگی بیشتر می‌شه، هنوز می‌تونه درست مدیریت کنه. برای اینکه در مورد scalability درست صحبت کنیم، باید <strong>load</strong> سیستم رو کمی‌سازی کنیم، مثلاً با پارامترهایی مثل تعداد request بر ثانیه، نسبت read به write یا تعداد کاربرهای active.</p>
+<p>مثال: تحویل <strong>home timeline</strong> در Twitter.</p>
+<ul>
+<li>یه روش اینه که هر بار کاربر timeline رو باز می‌کنه، توییت‌های فالووینگ‌هاش fetch بشن. این برای کسایی که خیلی فالووینگ دارن می‌تونه سنگین بشه (read load بالا).</li>
+<li>روش دیگه اینه که وقتی کاربر توییت می‌کنه، اون توییت رو pre-compute کنیم و برای همه‌ی فالوورهاش push کنیم (fan-out) تا خوندن سریع بشه. این بار روی write می‌ذاره، مخصوصاً برای کاربرهای معروف.</li>
+<li>Twitter در عمل یه <strong>hybrid strategy</strong> استفاده می‌کنه: برای بیشتر کاربرا fan-out و برای celebrityها fetch موقع read.</li>
+</ul>
+<p>برای سنجش performance هم بهتره از <strong>percentile</strong>های زمان پاسخ (مثلاً p95 یا p99) استفاده کنیم، نه فقط average. چون &quot;tail latency&quot; همون تجربه‌ایه که خیلی از کاربرا حس می‌کنن و می‌تونه رضایتشون رو به شدت تحت‌تأثیر بذاره.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="maintainability"><strong>Maintainability</strong><a href="#maintainability" class="hash-link" aria-label="لینک مستقیم به maintainability" title="لینک مستقیم به maintainability">​</a></h3>
+<p>این موضوع مربوط به اینه که آدمای مختلف (از تیم engineering گرفته تا ops) بتونن در طول زمان به راحتی روی سیستم کار کنن، فیچرهای موجود رو نگه دارن و سیستم رو برای نیازهای جدید تغییر بدن. سه بخش مهم Maintainability:</p>
+<ul>
+<li>
+<p><strong>Operability</strong>: راحت بودن مدیریت سیستم برای تیم ops. یعنی مانیتورینگ خوب، مستندات شفاف، آپگرید راحت و پشتیبانی درست.</p>
+</li>
+<li>
+<p><strong>Simplicity</strong>: کنترل complexity. پیچیدگی می‌تونه از state زیاد، coupling شدید یا dependencyهای درهم‌تنیده بیاد. کم کردن complexity خیلی مهمه برای کاهش ریسک باگ و آسون‌تر کردن نگهداری. اینجا داشتن abstractionهای درست کمک می‌کنه سیستم رو به تیکه‌های کوچیک و reusable تقسیم کنیم.</p>
+</li>
+<li>
+<p><strong>Evolvability</strong>: قابلیت تغییر راحت سیستم و تطبیق با نیازهای جدید. این بخش خیلی به simplicity و abstractionهای درست وابسته‌ست.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fault-vs-failure">Fault vs Failure<a href="#fault-vs-failure" class="hash-link" aria-label="لینک مستقیم به Fault vs Failure" title="لینک مستقیم به Fault vs Failure">​</a></h3>
+<p>به طور کلی یه <strong>Fault</strong> یعنی یکی از کامپوننت‌های سیستم از چیزی که توی specification براش تعریف شده منحرف بشه. ولی این با <strong>Failure</strong> فرق داره: Failure وقتی اتفاق می‌افته که کل سیستم دیگه نتونه سرویس موردنیاز رو به کاربر بده.</p>
+<p>Reliability توی سیستم‌های نرم‌افزاری یعنی حتی وقتی این «چیزهایی که می‌تونن خراب بشن» (Faultها) پیش میان، سیستم همچنان درست کار کنه. چون حذف کامل Faultها عملاً غیرممکنه، سیستم‌ها طوری طراحی می‌شن که <strong>fault-tolerance mechanisms</strong> داشته باشن تا نذارن Faultها به Failure تبدیل بشن.</p>
+<p>یه راه تست این مکانیزم‌ها اینه که عمداً Fault تزریق کنیم. مثلاً ابزار معروف Netflix به اسم <strong>Chaos Monkey</strong> همین کارو می‌کنه: میاد بخشی از سیستم رو می‌ترکونه تا مطمئن بشیم سیستم می‌تونه زنده بمونه.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="دستههای-مختلف-fault">دسته‌های مختلف Fault<a href="#دستههای-مختلف-fault" class="hash-link" aria-label="لینک مستقیم به دسته‌های مختلف Fault" title="لینک مستقیم به دسته‌های مختلف Fault">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="۱-hardware-faults">۱. <strong>Hardware Faults</strong><a href="#۱-hardware-faults" class="hash-link" aria-label="لینک مستقیم به ۱-hardware-faults" title="لینک مستقیم به ۱-hardware-faults">​</a></h4>
+<p>این‌ها مشکلات فیزیکی هستن، مثل:</p>
+<ul>
+<li>سوختن هارد</li>
+<li>خرابی RAM</li>
+<li>قطع برق دیتاسنتر</li>
+<li>یا حتی یه نفر کابل شبکه رو بکشه بیرون</li>
+</ul>
+<p>تو دیتاسنترهای بزرگ این اتفاقات زیاده، ولی معمولاً <strong>random</strong> و <strong>independent</strong> در نظر گرفته می‌شن.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="۲-software-errors">۲. <strong>Software Errors</strong><a href="#۲-software-errors" class="hash-link" aria-label="لینک مستقیم به ۲-software-errors" title="لینک مستقیم به ۲-software-errors">​</a></h4>
+<p>این‌ها خطاهای سیستمی هستن که خیلی سخت‌تر می‌شه پیش‌بینیشون کرد. ممکنه روی چندین node با هم اتفاق بیفته و باعث <strong>system failure</strong> گسترده‌تر بشه.<br>
+<!-- -->مثال‌ها:</p>
+<ul>
+<li>یه bug که اگه ورودی خاصی بهش بدی کل application server رو crash کنه</li>
+<li>پروسه‌هایی که runaway می‌شن و همه‌ی resource مشترک رو می‌بلعن.</li>
+<li>سرویس‌های وابسته‌ای که کند یا بی‌پاسخ می‌شن.</li>
+<li>ا<strong>cascading failures</strong> (یعنی یه مشکل کوچیک باعث دومینویی از خطاها بشه).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="۳-human-errors">۳. <strong>Human Errors</strong><a href="#۳-human-errors" class="hash-link" aria-label="لینک مستقیم به ۳-human-errors" title="لینک مستقیم به ۳-human-errors">​</a></h4>
+<p>مثلا <strong>Configuration error</strong>ها یکی از اصلی‌ترین دلایل outage تو سرویس‌های بزرگ اینترنتی هستن، حتی بیشتر از hardware faults.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="faultها-توی-distributed-systems">Faultها توی Distributed Systems<a href="#faultها-توی-distributed-systems" class="hash-link" aria-label="لینک مستقیم به Faultها توی Distributed Systems" title="لینک مستقیم به Faultها توی Distributed Systems">​</a></h3>
+<p>وقتی سیستم روی چندین ماشین توی شبکه اجرا می‌شه، داستان فرق می‌کنه. اینجا <strong>partial failures</strong> خیلی رایجن: بعضی بخش‌ها خراب می‌شن، بقیه درست کار می‌کنن. این موضوع خودش Faultهای جدیدی می‌سازه:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="۱-network-faults">۱. <strong>Network Faults</strong><a href="#۱-network-faults" class="hash-link" aria-label="لینک مستقیم به ۱-network-faults" title="لینک مستقیم به ۱-network-faults">​</a></h4>
+<p>شبکه بین ماشین‌ها همیشه قابل اعتماد نیست. ممکنه:</p>
+<ul>
+<li>پیام (packet) گم بشه،</li>
+<li>تأخیر داشته باشه،</li>
+<li>دوباره ارسال بشه،</li>
+<li>یا حتی ترتیبش بهم بخوره.</li>
+</ul>
+<p>و هیچ تضمینی هم برای زمان و تحویلش نیست. فرستنده هم بدون جواب، نمی‌تونه مطمئن بشه که پیام رسیده. برای همین معمولاً از timeout استفاده می‌کنیم (که کامل هم درست کار نمی‌کنه). Congestion و صف‌زدن (queueing delay) هم دلایل اصلی نوسان performance شبکه‌ان.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="۲-unreliable-clocks">۲. <strong>Unreliable Clocks</strong><a href="#۲-unreliable-clocks" class="hash-link" aria-label="لینک مستقیم به ۲-unreliable-clocks" title="لینک مستقیم به ۲-unreliable-clocks">​</a></h4>
+<p>هر ماشین ساعت خودش رو داره که ممکنه drift کنه (یعنی سریع‌تر یا کندتر بشه). حتی با پروتکل‌هایی مثل NTP هم ممکنه ساعت‌ها sync نباشن. گاهی ساعت می‌تونه یه‌دفعه به عقب یا جلو بپره.<br>
+<!-- -->اگه برای ordering رویدادها روی چند node به این ساعت‌ها تکیه کنیم، ممکنه باعث <strong>data loss</strong> یا رفتار اشتباه بشه. مثلاً استراتژی <strong>last write wins</strong> توی conflict resolution ممکنه به خاطر همین مشکل fail کنه.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="۳-process-pauses">۳. <strong>Process Pauses</strong><a href="#۳-process-pauses" class="hash-link" aria-label="لینک مستقیم به ۳-process-pauses" title="لینک مستقیم به ۳-process-pauses">​</a></h4>
+<p>یه پروسه ممکنه یه‌دفعه برای مدت طولانی pause بشه، مثلاً به خاطر:</p>
+<ul>
+<li>اstop-the-world توی garbage collection،</li>
+<li>اsynchronous disk I/O،</li>
+<li>یا page fault.</li>
+</ul>
+<p>وقتی این pause اتفاق می‌افته، بقیه‌ی nodeها فکر می‌کنن این node مرده و declareش می‌کنن dead. حالا اگه دوباره بیدار بشه و بخواد با اطلاعات قدیمی کار کنه، مشکل درست می‌شه.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="۴-byzantine-faults">۴. <strong>Byzantine Faults</strong><a href="#۴-byzantine-faults" class="hash-link" aria-label="لینک مستقیم به ۴-byzantine-faults" title="لینک مستقیم به ۴-byzantine-faults">​</a></h4>
+<p>اینجا ماجرا خیلی بدتره: node ممکنه رفتار arbitrary یا حتی <strong>malicious</strong> داشته باشه. یعنی عمداً پیام‌های متناقض یا خراب بفرسته تا بقیه‌ی nodeها رو گمراه کنه.<br>
+<!-- -->البته پروتکل‌های <strong>Byzantine fault-tolerant</strong> وجود دارن، ولی بیشتر سیستم‌های داده‌ای server-side فرض می‌کنن nodeها ممکنه unreliable باشن، ولی dishonest نیستن (یعنی عمداً دروغ نمی‌گن).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="توصیف-load">توصیف Load<a href="#توصیف-load" class="hash-link" aria-label="لینک مستقیم به توصیف Load" title="لینک مستقیم به توصیف Load">​</a></h3>
+<p>ا<strong>Load</strong> یعنی تقاضا یا فشار کاری که روی سیستم میاد. <strong>Scalability</strong> هم یعنی توانایی سیستم برای هندل کردن همین افزایش Load.</p>
+<p>برای اینکه بتونیم از رشد حرف بزنیم، اول باید Load فعلی سیستم رو با چند تا عدد خلاصه کنیم؛ به اینا می‌گن <strong>load parameters</strong>. اینکه دقیقاً چه پارامترهایی رو انتخاب کنیم، بستگی به معماری سیستم داره.</p>
+<p>مثال‌هایی از load parameters:</p>
+<ul>
+<li>تعداد requests per second توی یه web server</li>
+<li>نسبت read به write توی یه database</li>
+<li>تعداد کاربران فعال همزمان توی یه chat room</li>
+<li>اhit rate یه cache</li>
+</ul>
+<p><strong>مثال توییتر</strong> خیلی خوب اینو نشون می‌ده. توی نوامبر ۲۰۱۲:</p>
+<ul>
+<li>
+<p>به طور میانگین ۴.۶k و در اوج ۱۲k request/second برای tweet کردن داشتن.</p>
+</li>
+<li>
+<p>ولی برای timeline دیدن ۳۰۰k request/second بود.</p>
+</li>
+</ul>
+<p>حالا شاید هندل کردن ۱۲k write/second ساده به نظر بیاد، اما مشکل اصلی توییتر <strong>fan-out</strong> بود. یعنی هر کاربر هم فالوئر زیاد داره، هم فالوئینگ زیاد. یه توییت از یه سلبریتی می‌تونه به ۳۰ میلیون home timeline نوشته بشه! پس توی این سناریو، توزیع فالوئرهای هر کاربر خودش یه <strong>load parameter</strong> کلیدی حساب می‌شه.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="توصیف-performance">توصیف Performance<a href="#توصیف-performance" class="hash-link" aria-label="لینک مستقیم به توصیف Performance" title="لینک مستقیم به توصیف Performance">​</a></h3>
+<p>وقتی Load رو شناختیم، بعدش باید بررسی کنیم که <strong>Performance</strong> سیستم با افزایش Load چه تغییری می‌کنه. معمولاً دو جور نگاه داریم:</p>
+<ol>
+<li>اگه یه load parameter زیاد بشه و منابع (CPU، Memory، Network Bandwidth) ثابت بمونن، Performance چه اتفاقی براش میفته؟</li>
+<li>اگه بخوایم Performance ثابت بمونه، باید چه‌قدر منابع رو افزایش بدیم وقتی load parameter بالا می‌ره؟</li>
+</ol>
+<p><strong>متریک‌های Performance</strong> به نوع سیستم بستگی دارن:</p>
+<ul>
+<li>توی <strong>batch processing systems</strong> مثل Hadoop، معمولاً <strong>Throughput</strong> مهم‌ترین معیار محسوب می‌شه (یعنی چند رکورد در ثانیه پردازش می‌شن یا کل job روی یه dataset چه مدت طول می‌کشه).</li>
+<li>توی <strong>online systems</strong>، بیشتر <strong>Response Time</strong> مهمه (یعنی فاصله بین فرستادن request از سمت client تا گرفتن response).</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="response-time-و-latency">Response Time و Latency<a href="#response-time-و-latency" class="hash-link" aria-label="لینک مستقیم به Response Time و Latency" title="لینک مستقیم به Response Time و Latency">​</a></h3>
+<p>خیلی وقتا &quot;Latency&quot; و &quot;Response Time&quot; رو یکی می‌دونن، ولی دقیقا یکی نیستن:</p>
+<ul>
+<li>ا<strong>Response Time</strong> همون چیزیه که کاربر می‌بینه: شامل زمان پردازش request (service time) + network delay + queueing delay.</li>
+<li>ا<strong>Latency</strong> فقط اون بخشی از زمانه که request منتظر می‌مونه تا سرویس داده بشه.</li>
+</ul>
+<p>اResponse time یه عدد ثابت نیست، بلکه یه <strong>distribution</strong> داره. حتی دو تا request یکسان هم می‌تونن response time متفاوتی داشته باشن (به خاطر context switch، packet retransmission، GC pause، یا disk I/O).</p>
+<p>برای اینکه Performance رو درست بفهمیم، استفاده از <strong>Percentiles</strong> خیلی بهتر از <strong>Mean (Average)</strong> ـه، چون میانگین نشون نمی‌ده چند درصد کاربرا واقعاً یه delay خاص رو تجربه کردن.</p>
+<ul>
+<li>
+<p>ا<strong>Median (50th percentile)</strong>: نصف requestها سریع‌تر از این هستن، نصف دیگه کندتر. این شاخص خوبیه برای &quot;تجربه‌ی معمولی کاربر&quot;.</p>
+</li>
+<li>
+<p>ا<strong>High percentiles</strong> یا همون <strong>Tail Latencies</strong> (مثل 95th، 99th یا 99.9th): خیلی مهمن، چون تجربه‌ی کندترین کاربرا رو نشون می‌دن. مثلاً Amazon فهمید فقط ۱۰۰ms افزایش response time می‌تونه فروش رو ۱٪ کم کنه!</p>
+</li>
+</ul>
+<p>اTail latency معمولا پایه‌ی <strong>SLO</strong> و <strong>SLA</strong> ـهاست که سطح انتظار کارایی و در دسترس بودن سرویس رو تعریف می‌کنن.</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="نقش-queueing">نقش Queueing<a href="#نقش-queueing" class="hash-link" aria-label="لینک مستقیم به نقش Queueing" title="لینک مستقیم به نقش Queueing">​</a></h3>
+<p>ا<strong>Queueing delay</strong> یکی از دلایل اصلی tail latency بالاست. حتی تعداد کمی request کند می‌تونه کل صف رو عقب بندازه و باعث <strong>head-of-line blocking</strong> بشه. به همین دلیل، خیلی مهمه که response time رو از سمت client بسنجیم.</p>
+<p>وقتی یه request end-user شامل چندین backend call باشه، <strong>tail latency amplification</strong> اتفاق می‌افته: یعنی حتی اگه فقط درصد کمی از backend callها کند باشن، تعداد خیلی بیشتری از درخواست‌های کاربر نهایی کند می‌شن.</p>
+<p>برای مانیتورینگ درست Percentiles هم الگوریتم‌های خاصی لازمه (مثل forward decay، t-digest یا HdrHistogram)، چون اینکه بخوای کل داده‌ها رو مرتب کنی خیلی inefficient می‌شه.</p>
+<p>وقتی یه سیستم با افزایش <strong>load</strong> (تقاضا) روبه‌رو میشه، لازمه یه سری استراتژی داشته باشیم که <strong>performance</strong> (عملکرد) خوب باقی بمونه. هیچ راه‌حل جادویی یا یکسانی برای همه‌چی وجود نداره. معماری درست، خیلی وابسته‌ست به نیاز اپلیکیشن و نوع <strong>load</strong>‌ای که می‌گیره.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="راههای-اصلی-برای-مقابله-با-load">راه‌های اصلی برای مقابله با load:<a href="#راههای-اصلی-برای-مقابله-با-load" class="hash-link" aria-label="لینک مستقیم به راه‌های اصلی برای مقابله با load:" title="لینک مستقیم به راه‌های اصلی برای مقابله با load:">​</a></h3>
+<ol>
+<li>
+<p>ا<strong>Scaling Up (Vertical Scaling)</strong><br>
+<!-- -->این یعنی انتقال به یه ماشین قوی‌تر. مثلاً یه سرور قدرتمند با کلی CPU، رم زیاد و دیسک‌های متعدد. اینا مثل یه ماشین واحد کار می‌کنن و یه interconnect سریع دارن که هر CPU می‌تونه به هر بخش از حافظه یا دیسک دسترسی داشته باشه.<br>
+<!-- -->مدیریت این مدل راحت‌تره، ولی هزینه‌ش به‌صورت خطی بالا نمیره؛ یعنی اگه ماشین دو برابر بزرگ‌تر بگیری، لزوماً دو برابر <strong>load</strong> رو نمی‌کشه. همینطور محدودیت‌هایی مثل bottleneck و تک‌مکان جغرافیایی هم داره. البته بعضی high-end server ها قطعات hot-swappable دارن برای <strong>fault tolerance</strong>، ولی باز محدودیت دارن.</p>
+</li>
+<li>
+<p>ا<strong>Scaling Out (Horizontal Scaling)</strong><br>
+<!-- -->این یعنی پخش کردن <strong>load</strong> روی چندتا ماشین کوچیک‌تر، که بهش میگن <strong>shared-nothing architecture</strong>. تو این مدل، هر node (با CPU، رم و دیسک خودش) از طریق یه شبکه عادی به بقیه وصله.<br>
+<!-- -->مزیتش اینه که دیتای بزرگ می‌تونه روی چندتا دیسک پخش بشه و query ها هم بین چندتا CPU تقسیم بشن. اگه query فقط روی یه partition اجرا بشه، اون node می‌تونه مستقل کار کنه، و با اضافه کردن node جدید، throughput بالا میره.<br>
+<!-- -->مشکلش اینه که distributed shared-nothing معماری پیچیدگی بیشتری میاره و بعضی وقتا data model ها رو محدود می‌کنه.</p>
+<p>🔹 ا<strong>Partitioning (Sharding)</strong><br>
+<!-- -->یکی از کلیدی‌ترین روش‌ها برای scaling out همینه. دیتابیس بزرگ رو می‌شکونیم به چندتا partition کوچیک‌تر و می‌دیم به nodeهای مختلف. اینطوری هم دیتا پخش میشه هم <strong>query load</strong>. هدف اینه که از hot spot جلوگیری بشه (یعنی جایی که یه partition بیش از حد پرکار میشه).</p>
+<p>روش‌های partitioning:</p>
+<ul>
+<li>
+<p>ا<strong>Key Range Partitioning</strong>: کلیدها رو sort می‌کنیم و هر partition یه بازه از کلیدها رو می‌گیره. برای range query خیلی خوبه، ولی خطر hot spot داره.</p>
+</li>
+<li>
+<p>ا<strong>Partitioning by Hash of Key</strong>: کلیدها رو hash می‌کنیم تا یکنواخت‌تر پخش بشن. اینطوری احتمال hot spot کمتره. <strong>Consistent hashing</strong> هم توی سیستم‌های caching اینترنتی معروفه.</p>
+</li>
+<li>
+<p><strong>Partitioning with Secondary Indexes</strong>: این یکی سخت‌تره چون secondary index مستقیم روی یه partition نمی‌شینه. دو تا روش معروف داره:</p>
+<p>-ا Document-based (ایندکس کنار document ذخیره میشه → query باید scatter/gather کنه)</p>
+<ul>
+<li>اTerm-based (ایندکس global میشه → read سریع‌تر، ولی write پیچیده‌تر میشه)</li>
+</ul>
+</li>
+</ul>
+<p>🔹 ا<strong>Replication</strong><br>
+<!-- -->معمولاً همراه partitioning استفاده میشه. یعنی چندتا کپی از یه دیتا روی nodeهای مختلف. اینطوری هم <strong>fault tolerance</strong> داریم هم performance بهتر.</p>
+<p>روش‌های replication:</p>
+<ul>
+<li>
+<p>ا<strong>Single-Leader Replication</strong>: همه writeها میرن یه leader، بعد به followerها replicate میشه. ساده‌تره ولی failover لازمه.</p>
+</li>
+<li>
+<p>ا<strong>Multi-Leader Replication</strong>: چندتا node می‌تونن write بگیرن و async به هم replicate می‌کنن. برای multi-datacenter خوبه ولی conflict resolution سخت میشه.</p>
+</li>
+<li>
+<p>ا<strong>Leaderless Replication</strong>: هر replica می‌تونه write رو مستقیم بگیره. معمولا با quorum (تعداد مشخصی node باید تأیید بدن) consistency رو حفظ می‌کنن. robust هست، ولی معمولاً linearizability نداره.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>ا<strong>Elastic Systems vs. Manually Scaled Systems</strong></p>
+<ul>
+<li>
+<p>ا<strong>Elastic Systems</strong>: خودشون وقتی load میره بالا، منابع اضافه می‌کنن. برای workloadهای غیرقابل‌پیش‌بینی خیلی خوبن.</p>
+</li>
+<li>
+<p>ا<strong>Manually Scaled Systems</strong>: باید آدم‌ها دستی تحلیل کنن و تصمیم بگیرن کی ماشین اضافه بشه. ساده‌تره و سورپرایز کمتری داره.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>No One-Size-Fits-All Architecture</strong><br>
+<!-- -->بهترین معماری بستگی داره به خصوصیات اپلیکیشن: تعداد readها و writeها، حجم دیتا، پیچیدگی دیتا، نیاز به response time و الگوهای دسترسی.<br>
+<!-- -->مثلاً سیستمی که ۱۰۰هزار درخواست کوچیک در ثانیه رو هندل می‌کنه، زمین تا آسمون فرق داره با سیستمی که فقط ۳ درخواست سنگین در دقیقه می‌گیره، حتی اگه throughput کلی مشابه باشه. برای startupها هم معمولاً مهم‌تره که سریع فیچر بسازن تا اینکه خودشونو درگیر scaling زودهنگام کنن.</p>
+</li>
+<li>
+<p><strong>General-Purpose Building Blocks</strong><br>
+<!-- -->با اینکه معماری‌ها اختصاصی هستن، ولی معمولاً از یه سری building block عمومی ساخته میشن. شناخت این پایه‌ها خیلی مهمه برای طراحی سیستم scalable.</p>
+</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-tags-row"><div class="col"><b>برچسب‌ها:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/my-notes/docs/tags/book">book</a></li></ul></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="صفحات مستندات"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/نرم‌افزار/عمومی/جاوااسکریپت/layout_thrashing"><div class="pagination-nav__sublabel">قبلی</div><div class="pagination-nav__label">Layout Thrashing</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-notes/docs/نرم‌افزار/عمومی/گو/Conncurrency"><div class="pagination-nav__sublabel">بعدی</div><div class="pagination-nav__label">Conncurrency</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#فصل-۱-reliable-scalable-و-maintainable-applications" class="table-of-contents__link toc-highlight">فصل ۱: <strong>Reliable، Scalable و Maintainable Applications</strong></a><ul><li><a href="#reliability" class="table-of-contents__link toc-highlight"><strong>Reliability</strong></a></li><li><a href="#scalability" class="table-of-contents__link toc-highlight"><strong>Scalability</strong></a></li><li><a href="#maintainability" class="table-of-contents__link toc-highlight"><strong>Maintainability</strong></a></li><li><a href="#fault-vs-failure" class="table-of-contents__link toc-highlight">Fault vs Failure</a></li><li><a href="#دستههای-مختلف-fault" class="table-of-contents__link toc-highlight">دسته‌های مختلف Fault</a></li><li><a href="#faultها-توی-distributed-systems" class="table-of-contents__link toc-highlight">Faultها توی Distributed Systems</a></li><li><a href="#توصیف-load" class="table-of-contents__link toc-highlight">توصیف Load</a></li><li><a href="#توصیف-performance" class="table-of-contents__link toc-highlight">توصیف Performance</a></li><li><a href="#response-time-و-latency" class="table-of-contents__link toc-highlight">Response Time و Latency</a></li><li><a href="#نقش-queueing" class="table-of-contents__link toc-highlight">نقش Queueing</a></li><li><a href="#راههای-اصلی-برای-مقابله-با-load" class="table-of-contents__link toc-highlight">راه‌های اصلی برای مقابله با load:</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
