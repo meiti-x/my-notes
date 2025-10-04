@@ -1,10 +1,3 @@
----
-title: Docker In Action
-tags:
-  - book
-  - docker
-description: برداشت های من از کتاب داکر در عمل
----
 
 <img src="https://m.media-amazon.com/images/I/71VgrJPXWiL._SL1500_.jpg"  height="500"/>
 
